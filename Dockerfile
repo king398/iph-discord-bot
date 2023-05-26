@@ -1,0 +1,10 @@
+FROM python:latest
+RUN useradd -m jeff &&\
+    mkdir /discord-bot &&\
+    chown -R jeff:jeff /discord-bot
+USER jeff
+WORKDIR /discord-bot
+COPY requirements.txt ./
+RUN pip3 install requirements.txt
+COPY app.py ./
+CMD python3 ./app.py

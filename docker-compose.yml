@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  discord-bot:
+    build: .
+    container_name: "IPH-Bot"
+    environment:
+      DISCORD_BOT_TOKEN: /run/secrets/discord_bot_token
+    secrets:
+      - discord_bot_token
+
+secrets:
+  discord_bot_token:
+    file: discord_bot_token.txt
