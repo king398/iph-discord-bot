@@ -1,27 +1,16 @@
 import discord
 import os
 
-class IPHClient(discord.Client):
-    async def on_ready(self):
-        print(f"Logged on as {self.user}")
-    
-    async def on_message(self, message):
-        if message.author == self.user:
-            return
-        if message.content == '?_ping':
-            await message.channel.send('pong')
-        if message.content == '?_thermalpaste':
-            await self.thermalpaste(message)
-        if message.content == '?_benchmark' or message.content == '?_benchmarks':
-            await message.reply("https://discord.com/channels/1039926726320468151/1040148136695439451/1097182278137954414")
-        if message.content == '?_psutierlist':
-            await message.reply("https://cultists.network/140/psu-tier-list/")
-        if message.content == '?_vendors':
-            await message.reply("https://discord.com/channels/1039926726320468151/1040148136695439451/1075327876125163560")
-        if message.content == '?_undervolt' or message.content == '?_overclock':
-            await message.reply("https://discord.com/channels/1039926726320468151/1111113878722596905")
-    async def thermalpaste(self, message):
-        await message.reply("""
+bot = discord.Bot()
+
+@bot.event
+async def on_ready():
+    print(f"{bot.user} is ready and online!")
+
+# Thermal paste command
+@bot.command(descrption="Provides with the list of reliable thermal pastes")
+async def thermalpaste(ctx):
+        await ctx.respond("""
 **__Reliable thermal pastes__**
 
 _Legend_:
@@ -45,8 +34,34 @@ Cooler Master Mastergel Maker
 Cooler Master Cryofuze
 """)
 
-intents = discord.Intents.default()
-intents.message_content = True
+@bot.command(description="Check if the bot is online or not.")
+async def ping(ctx):
+    await ctx.respond(f"pong! with a latency of {bot.latency * 1000}ms.")
 
-client = IPHClient(intents=intents)
-client.run(os.environ.get('DISCORD_BOT_TOKEN'))
+@bot.command(descrption="Provides with the list of benchmarks and stress tests for various PC components")
+async def benchmark(ctx):
+    await ctx.respond("https://discord.com/channels/1039926726320468151/1040148136695439451/1097182278137954414")
+
+@bot.command(descrption="Provides with the Cultist PSU Tier list")
+async def psutierlist(ctx):
+    await ctx.respond("https://cultists.network/140/psu-tier-list/")
+
+@bot.command(descrption="Provides with the list of Trusted Online Vendors")
+async def vendors(ctx):
+    await ctx.respond("https://discord.com/channels/1039926726320468151/1040148136695439451/1075327876125163560")
+
+uvoc = discord.SlashCommandGroup("uvoc", "Undervolt and Overclocking guides.")
+
+@uvoc.command(descrption="Provides with the guide to Undervolt your GPU/CPU")
+async def undervolt(ctx):
+    await ctx.respond("https://discord.com/channels/1039926726320468151/1111113878722596905")
+
+@uvoc.command(descrption="Provides with the guide to Overclock your GPU/CPU/Memory")
+async def overclock(ctx):
+    await undervolt(ctx)
+
+bot.add_application_command(uvoc)
+
+
+
+bot.run(os.environ.get('DISCORD_BOT_TOKEN'))

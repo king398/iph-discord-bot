@@ -1,2 +1,6 @@
-discord.py
+py-cord
 requests
+aiodns
+brotlipy
+cchardet
+orjson
