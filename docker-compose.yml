@@ -6,3 +6,14 @@ services:
     environment:
       DISCORD_BOT_TOKEN: "${DISCORD_BOT_TOKEN}"
     restart: "always"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    container_name: "mongo"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGODB_PASSWORD}"
+    volumes:
+      - ./data:/data/db
