@@ -1,5 +1,6 @@
 py-cord
 requests
+pycryptodome
 aiodns
 brotlipy
 cchardet

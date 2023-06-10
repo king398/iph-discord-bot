@@ -2,19 +2,7 @@ import discord
 import os
 from pymongo import MongoClient
 import techpowerup as tpudb
-
-## Initialising MongoDB connection, database, and collection.
-
-print("Initialising MongoClient")
-mongodb_connection_url = f"mongodb://root@${os.environ.get('MONGODB_PASSWORD')}mongo/techpowerup?authSource=admin"
-mongo_client = MongoClient(mongodb_connection_url)
-database = mongo_client.get_database()
-
-# CPU Collection
-cpu_collection = database["CPU"]
-
-# GPU Collection
-gpu_collection = database["GPU"]
+from utils import *
 
 bot = discord.Bot()
 
@@ -101,11 +89,12 @@ async def cpu(
         "query" : name
     })
     if not search_result:
-        ctx.respond(f"No CPUs found with the name '{name}' under brand '{brand}'")
+        await ctx.respond(f"No CPUs found with the name '{name}' under brand '{brand}'")
     if type(search_result) == tpudb.CPU:
-        ctx.respond(f"We found the exact CPU! Embed is WIP.")
+        embedded_result = build_cpu_embed(search_result)
+        await ctx.respond(f"We found the exact CPU!", embed=embedded_result)
     if type(search_result) == list:
-        ctx.respond(f"Multiple CPUs found. List selection is WIP.")
+        await ctx.respond(f"Multiple CPUs found. List selection is WIP.")
 
 bot.add_application_command(techpowerup)
 
