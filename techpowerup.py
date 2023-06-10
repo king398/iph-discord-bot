@@ -5,7 +5,7 @@ import pandas as pd
 ## Initialising MongoDB connection, database, and collection.
 
 print("Initialising MongoClient")
-mongodb_connection_url = f"mongodb://root@${os.environ.get('MONGODB_PASSWORD')}mongo/techpowerup?authSource=admin"
+mongodb_connection_url = f"mongodb://root@{os.environ.get('MONGODB_PASSWORD')}mongo/techpowerup?authSource=admin"
 mongo_client = MongoClient(mongodb_connection_url)
 database = mongo_client.get_database()
 
