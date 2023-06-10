@@ -5,6 +5,7 @@ services:
     container_name: "IPH-Bot"
     environment:
       DISCORD_BOT_TOKEN: "${DISCORD_BOT_TOKEN}"
+      MONGODB_PASSWORD: "${MONGODB_PASSWORD}"
     restart: "always"
     depends_on:
       - mongo
