@@ -4,11 +4,11 @@ import pandas as pd
 import urllib.parse
 ## Initialising MongoDB connection, database, and collection.
 print("Initialising MongoClient")
-#mongodb_connection_url = f"mongodb://root:{os.environ.get('MONGODB_PASSWORD')}@mongo/techpowerup?authSource=admin"
+mongodb_connection_url = f"mongodb://root:{os.environ.get('MONGODB_PASSWORD')}@mongo/techpowerup?authSource=admin"
 
 # DEBUG MONGO HOST
 
-mongodb_connection_url = f"mongodb://root:{os.environ.get('MONGODB_PASSWORD')}@localhost:4040/techpowerup?authSource=admin"
+#mongodb_connection_url = f"mongodb://root:{os.environ.get('MONGODB_PASSWORD')}@localhost:4040/techpowerup?authSource=admin"
 
 client = MongoClient(mongodb_connection_url)
 
