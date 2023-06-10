@@ -4,3 +4,5 @@ aiodns
 brotlipy
 cchardet
 orjson
+pandas
+pymongo
