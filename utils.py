@@ -21,5 +21,5 @@ def build_cpu_embed(cpu : CPU):
     embed.add_field(name="TDP", value=cpu.tdp, inline=True)
     embed.add_field(name="Link", value=f"[Detailed Specs on Techpowerup](https://techpowerup.com{cpu.link})")
     
-    embed.set_author(name="IPCHW Bot", icon_url='https://i.imgur.com/1GGJFqC.png')
+    embed.set_author(name="IPCHW Bot", icon_url='https://i.imgur.com/tLkVAlI.png')
     return embed

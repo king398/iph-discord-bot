@@ -56,7 +56,7 @@ def searchcpu(query: dict):
     search_query = {"Brand" : query["Brand"]}
     search_query.update({
             "Name"  : {
-                "$regex" : query['query']+".{0,3}$",
+                "$regex" : query['query'],
                 '$options' : 'i'
             }
         })
