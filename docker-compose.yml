@@ -10,8 +10,8 @@ services:
     depends_on:
       - mongo
   mongo:
-    image: mongo
-    container_name: "mongo:6.0.3"
+    image: mongo:6.0.3
+    container_name: "mongo"
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
