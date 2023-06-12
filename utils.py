@@ -20,16 +20,17 @@ class CPUDropdown(ui.Select):
         super().__init__(
             placeholder="Following CPUs were found for your query", 
             min_values=1,
-            max_values=2,
+            max_values=1,
             options=self.options_list
             )
         
     async def callback(self, interaction: Interaction):
+        self.disabled = True
         await interaction.response.send_message(f"Here is specs for selected CPU", embed=build_cpu_embed(cpu=self.mapped_options[self.values[0]]))
 
 
 class CPUSelectorView(ui.View):
-    def __init__(self, cpu_list: list, *items: Item, timeout=5, disable_on_timeout=True):
+    def __init__(self, cpu_list: list, *items: Item, timeout=30, disable_on_timeout=True):
         self.cpu_list = cpu_list
         super().__init__(timeout=timeout, disable_on_timeout=disable_on_timeout)
         self.add_item(CPUDropdown(self.cpu_list))
