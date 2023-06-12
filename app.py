@@ -3,7 +3,15 @@ import os
 from pymongo import MongoClient
 import techpowerup as tpudb
 from utils import *
+import logging
 
+logger=logging.getLogger('discord')
+logger.setLevel(logging.INFO)
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
+
+# DEBUG load_dot_env()
 bot = discord.Bot()
 
 @bot.event
@@ -90,11 +98,11 @@ async def cpu(
     })
     if not search_result:
         await ctx.respond(f"No CPUs found with the name '{name}' under brand '{brand}'")
-    if type(search_result) == tpudb.CPU:
+    elif type(search_result) == tpudb.CPU:
         embedded_result = build_cpu_embed(search_result)
         await ctx.respond(f"We found the exact CPU!", embed=embedded_result)
-    if type(search_result) == list:
-        await ctx.respond(f"Multiple CPUs found. List selection is WIP.")
+    elif type(search_result) is list:
+        await ctx.respond("Multiple CPUs found. Please pick one:", view=CPUSelectorView(cpu_list=cpu_list_builder(search_result)))
 
 bot.add_application_command(techpowerup)
 

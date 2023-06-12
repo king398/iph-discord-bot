@@ -2,9 +2,11 @@ import os
 from pymongo import MongoClient
 import pandas as pd
 import urllib.parse
+
 ## Initialising MongoDB connection, database, and collection.
 print("Initialising MongoClient")
-mongodb_connection_url = f"mongodb://root:{os.environ.get('MONGODB_PASSWORD')}@mongo/techpowerup?authSource=admin"
+print(f"MONGODB_HOST: {os.environ.get('MONGODB_HOST')}")
+mongodb_connection_url = f"mongodb://root:{os.environ.get('MONGODB_PASSWORD')}@{os.environ.get('MONGODB_HOST')}/techpowerup?authSource=admin"
 
 # DEBUG MONGO HOST
 
@@ -56,7 +58,7 @@ def searchcpu(query: dict):
     search_query = {"Brand" : query["Brand"]}
     search_query.update({
             "Name"  : {
-                "$regex" : query['query'],
+                "$regex" : f"{query['query']}",
                 '$options' : 'i'
             }
         })
@@ -65,6 +67,7 @@ def searchcpu(query: dict):
         results.append(document)
     if len(results) == 1:
         return CPU(results[0])
-    if len(results) == 0:
+    elif len(results) == 0:
         return False
-    return(results)
+    elif len(results) > 1:
+        return(results)

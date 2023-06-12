@@ -6,6 +6,7 @@ services:
     environment:
       DISCORD_BOT_TOKEN: "${DISCORD_BOT_TOKEN}"
       MONGODB_PASSWORD: "${MONGODB_PASSWORD}"
+      MONGODB_HOST: "${MONGODB_HOST}"
     restart: "always"
     depends_on:
       - mongo

@@ -1,4 +1,4 @@
-FROM python:3.10.11
+FROM python:3.10
 RUN useradd -m jeff &&\
     mkdir /discord-bot &&\
     chown -R jeff:jeff /discord-bot
@@ -7,4 +7,5 @@ WORKDIR /discord-bot
 COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
 COPY *.py ./
-CMD python3 ./app.py
+RUN touch discord.log
+CMD python3 ./app.py 2>&1 & tail -f discord.log
