@@ -25,10 +25,9 @@ class CPUDropdown(ui.Select):
             )
         
     async def callback(self, interaction: Interaction):
-        self.disabled = True
-        await interaction.response.send_message(f"Here is specs for selected CPU", embed=build_cpu_embed(cpu=self.mapped_options[self.values[0]]))
-
-
+        await interaction.response.edit_message(content="Here is specs for selected CPU", embed=build_cpu_embed(cpu=self.mapped_options[self.values[0]]))
+        
+        
 class CPUSelectorView(ui.View):
     def __init__(self, cpu_list: list, *items: Item, timeout=30, disable_on_timeout=True):
         self.cpu_list = cpu_list
