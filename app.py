@@ -116,6 +116,6 @@ bot.add_application_command(techpowerup)
 @bot.event
 async def on_message(message):
     if message.author != bot.user and bot.user in message.mentions:
-        await message.reply(":bahinchod:")
+        await message.reply("<:bahinchod:1076143675811319848>")
 
 bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
