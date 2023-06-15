@@ -31,6 +31,7 @@ class CPU():
     name = ""
     link = ""
     codename = ""
+    product_class = ""
     cores = ""
     clock = ""
     socket = ""
@@ -38,11 +39,14 @@ class CPU():
     l3cache = ""
     tdp = ""
     released = ""
+    igpu = ""
+    multiplier = ""
     def __init__(self, cpu: dict) -> None:
         self.brand = cpu["Brand"]
         self.name = cpu["Name"]
         self.link = cpu["Link"]
         self.codename = cpu["Codename"]
+        self.product_class = cpu["Product Class"]
         self.cores = cpu["Cores"]
         self.clock = cpu["Clock"]
         self.socket = cpu["Socket"]
@@ -50,6 +54,8 @@ class CPU():
         self.l3cache = cpu["L3 Cache"]
         self.tdp = cpu["TDP"]
         self.released = cpu["Released"]
+        self.igpu = cpu["iGPU"]
+        self.multiplier = cpu["Multiplier"]
 
 
 
@@ -58,10 +64,16 @@ def searchcpu(query: dict):
     search_query = {"Brand" : query["Brand"]}
     search_query.update({
             "Name"  : {
-                "$regex" : f"{query['query']}",
+                "$regex" : f"{query['Name']}",
                 '$options' : 'i'
             }
         })
+    if query["iGPU"]:
+        search_query.update({"iGPU": query["iGPU"]})
+    if query["Product Class"]:
+        search_query.update({"Product Class": query["Product Class"]})
+    if query["Multiplier"]:
+        search_query.update({"Multiplier": query["Multiplier"]})
     documents = cpu_collection.find(search_query)
     for document in documents:
         results.append(document)

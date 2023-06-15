@@ -1,9 +1,9 @@
 import discord
 import os
-from pymongo import MongoClient
 import techpowerup as tpudb
 from utils import *
 import logging
+import random
 
 logger=logging.getLogger('discord')
 logger.setLevel(logging.INFO)
@@ -11,7 +11,7 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-# DEBUG load_dot_env()
+#DEBUG load_dot_env()
 bot = discord.Bot()
 
 @bot.event
@@ -90,21 +90,32 @@ techpowerup = discord.SlashCommandGroup("techpowerup", "Provides with CPU and GP
 async def cpu(
      ctx,
      brand: discord.Option(discord.SlashCommandOptionType.string, choices=["AMD", "Intel", "VIA"]),
-     name: discord.Option(discord.SlashCommandOptionType.string)
+     name: discord.Option(discord.SlashCommandOptionType.string, description="Exact or part of the SKU to look for."),
+     igpu: discord.Option(discord.SlashCommandOptionType.string, choices=["Yes", "No"], required=False, description="Does it have an iGPU?", default=False),
+     multiplier: discord.Option(discord.SlashCommandOptionType.string, choices=["Locked", "Unlocked"], required=False, description="Is the multiplier Locked or Unlocked?", default=False),
+     class_of_cpu: discord.Option(discord.SlashCommandOptionType.string, required=False, choices=["Desktop", "Server", "Mobile", "Mobile Server"], description="Product Class of the CPU (Note: Only Intel has 'Mobile Server' class products.)", default=False)
 ):
     search_result = tpudb.searchcpu({
         "Brand": brand,
-        "query" : name
+        "Name" : name,
+        "iGPU" : igpu,
+        "Product Class": class_of_cpu,
+        "Multiplier": multiplier
     })
     if not search_result:
-        await ctx.respond(f"No CPUs found with the name '{name}' under brand '{brand}'")
+        await ctx.respond(f"No CPUs found with the name '{name}' under brand '{brand}' using your filters. Try again.")
     elif type(search_result) == tpudb.CPU:
         embedded_result = build_cpu_embed(search_result)
         await ctx.respond(f"We found the exact CPU!", embed=embedded_result)
-    elif type(search_result) is list:
+    elif type(search_result) is list and len(search_result) < 25:
         await ctx.respond("Multiple CPUs found. Please pick one:", view=CPUSelectorView(cpu_list=cpu_list_builder(search_result)))
-
+    elif len(search_result) > 25:
+        await ctx.respond("Too many results. Please refine your search by choosing additional filter")
 bot.add_application_command(techpowerup)
 
+@bot.event
+async def on_message(message):
+    if message.author != bot.user and bot.user in message.mentions:
+        await message.reply(":baahinchod:")
 
 bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
