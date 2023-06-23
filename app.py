@@ -12,11 +12,23 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 #DEBUG load_dot_env()
-bot = discord.Bot()
+bot = discord.Bot(command_prefix='?_', intents=discord.Intents.all())
 
 @bot.event
 async def on_ready():
     print(f"{bot.user} is ready and online!")
+
+@bot.event
+async def on_message(message):
+    print(message.content)
+    if message.author == bot.user:
+        return
+    if "4090" in message.content and "melt" in message.content:
+        await message.reply("Another one! <:xddICANT:1047485587688525874>")
+    elif bot.user in message.mentions:
+        await message.reply("<:bahinchod:1076143675811319848>")
+
+
 
 ## Thermal paste command
 @bot.command(descrption="Provides with the list of reliable thermal pastes")
@@ -113,9 +125,5 @@ async def cpu(
         await ctx.respond("Too many results. Please refine your search by choosing additional filter")
 bot.add_application_command(techpowerup)
 
-@bot.event
-async def on_message(message):
-    if message.author != bot.user and bot.user in message.mentions:
-        await message.reply("<:bahinchod:1076143675811319848>")
 
 bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
