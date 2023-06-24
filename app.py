@@ -31,31 +31,13 @@ async def on_message(message):
 
 
 ## Thermal paste command
+# PROD Channel ID : 1040148136695439451
+# PROD Message ID : 1108449206043164742
 @bot.command(descrption="Provides with the list of reliable thermal pastes")
 async def thermalpaste(ctx):
-        await ctx.respond("""
-**__Reliable thermal pastes__**
-
-_Legend_:
-PCM := Phase change material
-
-**_Value for money_**
-Arctic MX4
-Arctic MX6
-Cooler Master Mastergel Regular
-Cooler Master Mastergel Pro
-Noctua NT-H1
-Gelid GC Extreme
-
-**_Mid range_**
-Noctua NT-H2
-
-**_High End_**
-Honeywell PTM7950 (PCM)
-Kryonaut Extreme
-Cooler Master Mastergel Maker
-Cooler Master Cryofuze
-""")
+        channel = await ctx.guild.fetch_channel(1040148136695439451)
+        message_content = await channel.fetch_message(1108449206043164742)
+        await ctx.respond(message_content.content)
 
 ## /ping Command
 @bot.command(description="Check if the bot is online or not.")
