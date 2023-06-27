@@ -59,6 +59,10 @@ async def psutierlist(ctx):
 async def vendors(ctx):
     await ctx.respond("https://discord.com/channels/1039926726320468151/1040148136695439451/1075327876125163560")
 
+## /backupsolution
+@bot.command(description="Provides with the link to UPS/Inverter Guide")
+async def backupsolution(ctx):
+    await ctx.respond("https://discord.com/channels/1039926726320468151/1123222529503416371")
 
 ## UV/OC command group
 uvoc = discord.SlashCommandGroup("uvoc", "Undervolt and Overclocking guides.")
