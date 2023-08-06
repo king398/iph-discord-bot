@@ -27,6 +27,8 @@ async def on_message(message):
         await message.reply("Another one! <:xddICANT:1047485587688525874>")
     elif bot.user in message.mentions:
         await message.reply("<:bahinchod:1076143675811319848>")
+    elif '1127987418197405807' in message.mentions:
+        await message.reply("Panch hazaar launde dikh jaane chahiye <:xdd666:1047058134486757417>")
 
 
 
