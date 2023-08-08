@@ -23,7 +23,6 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    print(message.author.id)
     if message.author == bot.user:
         return
     if "4090" in message.content and "melt" in message.content:
