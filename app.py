@@ -29,7 +29,7 @@ async def on_message(message):
         await message.reply("<:bahinchod:1076143675811319848>")
     elif '<@&1127987418197405807>' in message.content:
         await message.reply("Panch hazaar launde dikh jaane chahiye <:xdd666:1047058134486757417>")
-    elif message.user.id == '85614143951892480':
+    elif message.author.id == '85614143951892480':
         await message.reply(["Chuppp bkl!! <:bahinchod:1076143675811319848>", "hhattt madarchod <:bahinchod:1076143675811319848>", "abeyy nikall lawde <:bahinchod:1076143675811319848>"][random.randint(0,2)])
 
 
