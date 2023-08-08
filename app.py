@@ -4,6 +4,8 @@ import techpowerup as tpudb
 from utils import *
 import logging
 import random
+#DEBUG from dotenv import load_dotenv
+
 
 logger=logging.getLogger('discord')
 logger.setLevel(logging.INFO)
@@ -11,7 +13,8 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-#DEBUG load_dot_env()
+#DEBUG load_dotenv()
+
 bot = discord.Bot(command_prefix='?_', intents=discord.Intents.all())
 
 @bot.event
@@ -20,7 +23,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    print(message.content)
+    print(message.author.id)
     if message.author == bot.user:
         return
     if "4090" in message.content and "melt" in message.content:
@@ -29,7 +32,7 @@ async def on_message(message):
         await message.reply("<:bahinchod:1076143675811319848>")
     elif '<@&1127987418197405807>' in message.content:
         await message.reply("Panch hazaar launde dikh jaane chahiye <:xdd666:1047058134486757417>")
-    elif message.author.id == '85614143951892480':
+    elif str(message.author.id) == '85614143951892480':
         await message.reply(["Chuppp bkl!! <:bahinchod:1076143675811319848>", "hhattt madarchod <:bahinchod:1076143675811319848>", "abeyy nikall lawde <:bahinchod:1076143675811319848>"][random.randint(0,2)])
 
 
