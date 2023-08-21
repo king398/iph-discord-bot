@@ -7,3 +7,5 @@ cchardet
 orjson
 pandas
 pymongo
+selenium
+python-dotenv
