@@ -35,7 +35,7 @@ async def on_message(message):
             '0': lambda message: message.reply("<:bahinchod:1076143675811319848>"),
             '1': lambda message: message.reply("[ honestly..., ](https://video.twimg.com/ext_tw_video/1693802046971875328/pu/vid/1280x720/9kXFQO_uea4CcUnH.mp4)")
                    }
-        actions[str(dice)]
+        await actions[str(dice)]
     elif '<@&1127987418197405807>' in message.content:
         await message.reply("Panch hazaar launde dikh jaane chahiye <:xdd666:1047058134486757417>")
     elif str(message.author.id) == '85614143951892480':
