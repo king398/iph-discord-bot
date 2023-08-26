@@ -1,6 +1,7 @@
 from selenium import webdriver, common
 from selenium.webdriver.common.by import By
-
+from discord import Embed
+import re
 
 options = webdriver.ChromeOptions()
 options.add_argument('--headless=new')
@@ -13,15 +14,35 @@ options.add_argument("--remote-debugging-port=46577")
 
 driver = webdriver.Chrome(options=options)
 
+def find_url(message):
+  url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\), ]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',message)
+  return url 
+
 
 def check_social(message):
+    url = find_url(message)
     for insta in ["https://instagram.com/", "https://www.instagram.com/"]:
-        if insta in message:
+        if insta in url:
             return (True, "Instagram")
     for twitter in ["https://twitter.com/", "https://x.com/", "https://www.twitter.com/", "https://www.x.com/"]:
-        if twitter in message:
+        if twitter in url:
             return (True, "Twitter")
     return (False, None)
+
+def embed_reel(url):
+    driver.get(url)
+    reel_url = driver.find_element(by=By.TAG_NAME, value="video").get_attribute(name='src')
+    title = driver.find_element(by=By.NAME, value="twitter:title").get_attribute(name='content')
+    description = ''
+    for el in driver.find_elements(by=By.TAG_NAME, value="meta"):
+        if el.get_attribute('property') == 'og:title':
+            description = el.get_attribute('content')
+    embed = Embed(
+        title=title,
+        description=description,
+        url=reel_url
+    )
+    return embed
 
 
 def embed_instagram(message):
