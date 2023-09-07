@@ -50,7 +50,7 @@ def embed_reel(url):
     for el in driver.find_elements(by=By.TAG_NAME, value="meta"):
         if el.get_attribute('property') == 'og:title':
             description = el.get_attribute('content')
-    message = f"[{title}]({reel_url})\n{description}"
+    message = f"[{title}](https://embed.mostwanted002.page/embed?url={parse.quote(reel_url)}&title={parse.quote(title)})\n{description}"
     return message
 
 
