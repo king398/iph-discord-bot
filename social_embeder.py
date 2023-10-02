@@ -7,16 +7,6 @@ import re
 import requests
 from urllib import parse
 
-options = webdriver.ChromeOptions()
-options.add_argument('--headless=new')
-options.add_argument("--no-sandbox") 
-options.add_argument("--disable-setuid-sandbox")
-options.add_argument("--disable-dev-shm-using")
-options.add_argument("--disable-extensions")
-options.add_argument("--disable-gpu")
-options.add_argument("--remote-debugging-port=46577")
-
-driver = webdriver.Chrome(options=options)
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'}
 
 def find_url(message):
@@ -34,24 +24,8 @@ def check_social(message):
     return (False, None)
 
 def embed_reel(url):
-    driver.get(url)
-    reel_url = ''
-    try:
-        WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(locator=(By.TAG_NAME,"video")))
-        reel_url = driver.find_element(by=By.TAG_NAME, value="video").get_attribute(name='src')
-        resp = requests.get(reel_url, allow_redirects=False, headers=headers)
-        reel_url = resp.headers['Location']
-    except Exception as e:
-        print(f"failed: {e}")
-        reel_url = url.replace('instagram.com', 'ddinstagram.com')
-        return reel_url
-    title = driver.find_element(by=By.NAME, value="twitter:title").get_attribute(name='content')
-    description = ''
-    for el in driver.find_elements(by=By.TAG_NAME, value="meta"):
-        if el.get_attribute('property') == 'og:title':
-            description = el.get_attribute('content')
-    message = f"[{title}](https://embed.mostwanted002.page/embed?url={parse.quote(reel_url)}&title={parse.quote(title)})\n{description}"
-    return message
+    reel_url = url.replace('instagram.com', 'ddinstagram.com')
+    return reel_url
 
 
 def embed_instagram(message):
