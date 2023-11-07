@@ -30,10 +30,7 @@ async def on_message(message):
     if "4090" in message.content and "melt" in message.content:
         await message.reply("Another one! <:xddICANT:1047485587688525874>")
     elif bot.user in message.mentions:
-        dice = random.randint(0, 100000) % 3
-        if dice == 0: await message.reply("<:bahinchod:1076143675811319848>"),
-        if dice == 1: await message.reply("[ honestly..., ](https://video.twimg.com/ext_tw_video/1693802046971875328/pu/vid/1280x720/9kXFQO_uea4CcUnH.mp4)")
-        if dice == 2: await message.reply("[ you know what...](https://files.mostwanted002.page/debates%20like%20a%20redittor.mp4)")
+        await message.reply(mentioned_me())
     elif '<@&1127987418197405807>' in message.content:
         await message.reply("Panch hazaar launde dikh jaane chahiye <:xdd666:1047058134486757417>")
     elif '<@&1158756290261160016>' in message.content:

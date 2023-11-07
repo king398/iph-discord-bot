@@ -4,7 +4,7 @@ from discord.enums import ChannelType, ComponentType
 from discord.interactions import Interaction
 from discord.ui.item import Item
 from techpowerup import *
-
+import random
 
 
 class CPUDropdown(ui.Select):
@@ -71,3 +71,15 @@ def build_cpu_embed(cpu : CPU):
 def cpu_list_builder(cpu_list: list):
     cpuList = [CPU(cpu) for cpu in cpu_list]
     return cpuList
+
+
+
+def mentioned_me():
+    memes = [
+        "<:bahinchod:1076143675811319848>",
+        "[ honestly..., ](https://video.twimg.com/ext_tw_video/1693802046971875328/pu/vid/1280x720/9kXFQO_uea4CcUnH.mp4)",
+        "[ you know what...](https://files.mostwanted002.page/debates%20like%20a%20redittor.mp4)",
+        "[<:soy:1142126551484338248> LoOk aT mE](https://files.mostwanted002.page/hype_train.mp4)"
+        ]
+    dice = random.randint(0, 100000) % len(memes)
+    return(memes[dice])
