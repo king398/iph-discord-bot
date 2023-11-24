@@ -81,7 +81,8 @@ def mentioned_me():
         "[ you know what...](https://files.mostwanted002.page/debates%20like%20a%20redittor.mp4)",
         "<:soy:1142126551484338248> [LoOk aT mE](https://files.mostwanted002.page/hype_train.mp4)",
         "[fr fr ong no cap](https://files.mostwanted002.page/acoustic.mp4)",
-        "[THE CONTENT!!!](https://files.mostwanted002.page/content_is_fire.mp4)"
+        "[THE CONTENT!!!](https://files.mostwanted002.page/content_is_fire.mp4)",
+        "[despair...](https://files.mostwanted002.page/when_will_it_end.mp4)"
         ]
     dice = random.randint(0, 100000) % len(memes)
     return(memes[dice])
