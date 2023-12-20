@@ -82,6 +82,11 @@ async def benchmark(ctx):
 async def psutierlist(ctx):
     await ctx.respond("https://cultists.network/140/psu-tier-list/")
 
+## /mouseguide
+@bot.command(description="Guide to choose the perfect gaming mouse")
+async def mouseguide(ctx):
+    await ctx.respond("https://1-hp.org/blog/hpforgamers/how-to-choose-a-gaming-mouse-ergonomics-calculator/")
+
 ## /vendors
 @bot.command(descrption="Provides with the list of Trusted Online Vendors")
 async def vendors(ctx):
