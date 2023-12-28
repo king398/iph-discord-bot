@@ -90,7 +90,7 @@ async def mouseguide(ctx):
 
 ## /clearCMOS
 @bot.command(description="Instructions to clear CMOS on modern motherboard")
-async def clearCMOS(ctx):
+async def clearcmos(ctx):
     message = """
 If your motherboard has a Clear CMOS button on the motherboard I/O, use that as instructed in the motherboard manual, else locate CLEAR CMOS pins on your motherboard (refer your motherboard's manual for motherboard layout. They are usually named as CLR_CMOS, CLRCMOS1, CLRRTC, etc. depending on the motherboard vendor.) and follow the steps below.
 
