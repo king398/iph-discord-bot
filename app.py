@@ -87,6 +87,23 @@ async def psutierlist(ctx):
 async def mouseguide(ctx):
     await ctx.respond("https://1-hp.org/blog/hpforgamers/how-to-choose-a-gaming-mouse-ergonomics-calculator/")
 
+
+## /clearCMOS
+@bot.command(description="Instructions to clear CMOS on modern motherboard")
+async def clearCMOS(ctx):
+    message = """
+If your motherboard has a Clear CMOS button on the motherboard I/O, use that as instructed in the motherboard manual, else locate CLEAR CMOS pins on your motherboard (refer your motherboard's manual for motherboard layout. They are usually named as CLR_CMOS, CLRCMOS1, CLRRTC, etc. depending on the motherboard vendor.) and follow the steps below.
+
+1. Turn off your PC.
+2. Disconnect your PC from AC Mains (Disconnect PSU from wall outlet).
+3. Press and hold power button for 5-10 seconds to flush power from the system.
+4. Take a screw driver and short the Clear CMOS pins for 2-3 seconds.
+5. Connect your PSU back to wall outlet.
+6. Turn on the PC. You should be greeted with BIOS screen requesting action for further setup.
+"""
+    await ctx.respond(message)
+
+
 ## /vendors
 @bot.command(descrption="Provides with the list of Trusted Online Vendors")
 async def vendors(ctx):
