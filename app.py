@@ -163,9 +163,9 @@ bot.add_application_command(techpowerup)
 
 
 
-## /ryzenlaptops
+## /ryzenmobile
 @bot.command(description="Naming scheme for Ryzen Mobile CPUs/APUs")
-async def backupsolution(ctx):
+async def ryzenmobile(ctx):
     naming_scheme = """
 ## Ryzen Mobile CPU/APU Naming Guide
 
