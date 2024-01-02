@@ -162,4 +162,57 @@ async def cpu(
 bot.add_application_command(techpowerup)
 
 
+
+## /ryzenlaptops
+@bot.command(description="Naming scheme for Ryzen Mobile CPUs/APUs")
+async def backupsolution(ctx):
+    naming_scheme = """
+## Ryzen Mobile CPU/APU Naming Guide
+
+```
+Ryzen 5 7640U -> Form Factor
+        ||||---> Feature Isolation
+        |||----> Architecture
+        ||-----> Market Segment
+        |------> Portfolio Model Year
+```        
+1. Form Factor:
+ - **HX** -> **55W+** _(Max Performance)_
+ - **HS** -> **~35W+** _(Thing Gaming/Creator)_
+ - **U** -> **15-28W** _(Premium Ultrathin)_
+ - **C** -> **15-28W** _(Chromebook)_
+ - **e** -> **9W** _(Fanless variant of 'U')_
+
+2. Feature Isolation:
+ - **0** -> _Lower Model within segment_
+ - **5** -> _Upper Model within segment_
+
+3. Architecture:
+ - **1** -> **Zen1** | **Zen+**
+ - **2** -> **Zen2**
+ - **3** -> **Zen3** | **Zen3+**
+ - **4** -> **Zen4**
+ - **5** -> **Zen5**
+etc.
+
+4. Market Segment:
+ - **1** -> **Athlon Silver**
+ - **2** -> **Athlon Gold**
+ - **3** -> **Ryzen 3**
+ - **4** -> **Ryzen 3**
+ - **5** -> **Ryzen 5**
+ - **6** -> **Ryzen 5**
+ - **7** -> **Ryzen 7**
+ - **8** -> **Ryzen 7/9**
+ - **9** -> **Ryzen 9**
+
+5. Portfolio Model Year:
+ - **7** -> **2023**
+ - **8** -> **2024**
+ - **9** -> **2025**
+"""
+    await ctx.respond(naming_scheme)
+
+
+
 bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
