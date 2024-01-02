@@ -169,6 +169,8 @@ async def ryzenmobile(ctx):
     naming_scheme = """
 ## Ryzen Mobile CPU/APU Naming Guide
 
+
+
 ```
 Ryzen 5 7640U -> Form Factor
         ||||---> Feature Isolation
@@ -211,7 +213,7 @@ etc.
  - **8** -> **2024**
  - **9** -> **2025**
 """
-    await ctx.respond(naming_scheme)
+    await ctx.respond(naming_scheme + "\n" + "https://files.mostwanted002.page/ryzen_mobile.jpg")
 
 
 
