@@ -28,7 +28,7 @@ async def on_message(message):
         return
     social_media = check_social(message.content)
     if message.author.id == '714745155835527198' and check_soy(message.content.lower()):
-        message.delete()
+        await message.delete()
     elif "4090" in message.content and "melt" in message.content:
         await message.reply("Another one! <:xddICANT:1047485587688525874>")
     elif bot.user in message.mentions:
