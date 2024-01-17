@@ -73,6 +73,12 @@ def cpu_list_builder(cpu_list: list):
     return cpuList
 
 
+def check_soy(message_content: str):
+    soy_keywords = ['soy', 'soyjack', 'goyim', 'slop']
+    for keyword in soy_keywords:
+        if keyword in message_content:
+            return True
+    return False
 
 def mentioned_me():
     memes = [
