@@ -28,6 +28,7 @@ async def on_message(message):
     if message.author == bot.user:
         return
     elif str(message.author.id) == '714745155835527198' and check_soy(message.content.lower()):
+#        await message.reply("Cope, Mald, and Seethe Lodu")
         await message.delete()
     elif "4090" in message.content and "melt" in message.content:
         await message.reply("Another one! <:xddICANT:1047485587688525874>")
