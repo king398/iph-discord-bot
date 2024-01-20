@@ -74,7 +74,7 @@ def cpu_list_builder(cpu_list: list):
 
 
 def check_soy(message_content: str):
-    soy_keywords = ['soy', 'soyjack', 'goyim', 'slop', 'suuure', '1984', 'cum', 'lodu']
+    soy_keywords = ['soy', 'soyjack', 'goyim', 'slop', 'suuure', '1984', 'cum', 'lodu', 'lund']
     for keyword in soy_keywords:
         if keyword in message_content:
             return True
