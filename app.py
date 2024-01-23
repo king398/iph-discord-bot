@@ -52,6 +52,8 @@ async def on_message(message):
                 new_message = embed_reel(url[0])
             else:
                 new_message = embed_instagram(message=message.content)
+        if social_media[1] == "Reddit":
+            new_message = embed_reddit(message=message.content)
         webhook = await message.channel.create_webhook(name=message.author.name)
         await webhook.send(str(new_message), username=message.author.name, avatar_url=message.author.display_avatar)
         await message.delete()

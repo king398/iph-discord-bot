@@ -21,6 +21,9 @@ def check_social(message):
     for twitter in ["https://twitter.com/", "https://x.com/", "https://www.twitter.com/", "https://www.x.com/"]:
         if twitter in message:
             return (True, "Twitter")
+    for reddit in ["https://reddit.com/", "https://www.reddit.com/"]:
+        if reddit in message:
+            return (True, "Reddit")
     return (False, None)
 
 def embed_reel(url):
@@ -38,3 +41,6 @@ def embed_twitter(message):
     elif "https://twitter.com/" in message: return message.replace("https://twitter.com/", "https://fxtwitter.com/")
     elif "https://www.twitter.com/" in message: return message.replace("https://www.twitter.com/", "https://fxtwitter.com/")
 
+def embed_reddit(message):
+    if "https://reddit.com" in message: return message.replace("https://reddit.com", "https://www.rxddit.com")
+    elif "https://www.reddit.com" in message: return message.replace("https://www.reddit.com", "https://www.rxddit.com")
