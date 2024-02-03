@@ -6,6 +6,7 @@ from discord.ui.item import Item
 from techpowerup import *
 import random
 
+random.seed(open("/dev/urandom", "rb").read(16))
 
 class CPUDropdown(ui.Select):
     def __init__(self, cpu_list: list) -> None:
