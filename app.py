@@ -24,7 +24,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-#    social_media = check_social(message.content)
+    social_media = check_social(message.content)
     if message.author == bot.user:
         return
     elif str(message.author.id) == '714745155835527198' and check_soy(message.content.lower()):
