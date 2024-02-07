@@ -40,27 +40,27 @@ async def on_message(message):
         await message.reply("https://tenor.com/n1VZhJ8Bumt.gif")
     elif 'uwu' == message.content.lower():
         await message.reply("[UwU](https://files.mostwanted002.page/i_have_your_ip.mp4)")
-#    elif str(message.author.id) == '85614143951892480':
-#        await message.reply(["Chuppp bkl!! <:bahinchod:1076143675811319848>", "hhattt madarchod <:bahinchod:1076143675811319848>", "abeyy nikall lawde <:bahinchod:1076143675811319848>"][random.randint(0,2)])
-#    elif social_media[0]:
-#        new_message = ''
-#        if social_media[1] == "Twitter":
-#            new_message = embed_twitter(message=message.content)
-#        if social_media[1] == "Instagram":
-#            if "/reel/" in message.content:
-#                url = find_url(message.content)
-#                new_message = embed_reel(url[0])
-#            else:
-#                new_message = embed_instagram(message=message.content)
-#        if social_media[1] == "Reddit":
-#            new_message = embed_reddit(message=message.content)
-#        webhook = await message.channel.create_webhook(name=message.author.name)
-#        await webhook.send(str(new_message), username=message.author.name, avatar_url=message.author.display_avatar)
-#        await message.delete()
-#        webhooks = await message.channel.webhooks()
-#        for webhook in webhooks:
-#                await webhook.delete()
-#
+    elif str(message.author.id) == '85614143951892480':
+        await message.reply(["Chuppp bkl!! <:bahinchod:1076143675811319848>", "hhattt madarchod <:bahinchod:1076143675811319848>", "abeyy nikall lawde <:bahinchod:1076143675811319848>"][random.randint(0,2)])
+    elif social_media[0]:
+        new_message = ''
+        if social_media[1] == "Twitter":
+            new_message = embed_twitter(message=message.content)
+        if social_media[1] == "Instagram":
+            if "/reel/" in message.content:
+                url = find_url(message.content)
+                new_message = embed_reel(url[0])
+            else:
+                new_message = embed_instagram(message=message.content)
+        if social_media[1] == "Reddit":
+            new_message = embed_reddit(message=message.content)
+        webhook = await message.channel.create_webhook(name=message.author.name)
+        await webhook.send(str(new_message), username=message.author.name, avatar_url=message.author.display_avatar)
+        await message.delete()
+        webhooks = await message.channel.webhooks()
+        for webhook in webhooks:
+                await webhook.delete()
+
 
 
 ## Thermal paste command
