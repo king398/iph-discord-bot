@@ -2,7 +2,6 @@ FROM python:3.10
 RUN useradd -m jeff &&\
     mkdir /discord-bot &&\
     chown -R jeff:jeff /discord-bot
-RUN apt update && apt install chromium -y
 USER jeff
 WORKDIR /discord-bot
 COPY requirements.txt ./

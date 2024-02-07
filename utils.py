@@ -90,7 +90,8 @@ def mentioned_me():
         "[fr fr ong no cap](https://files.mostwanted002.page/acoustic.mp4)",
         "[THE CONTENT!!!](https://files.mostwanted002.page/content_is_fire.mp4)",
         "[despair...](https://files.mostwanted002.page/when_will_it_end.mp4)",
-        "[UwU](https://files.mostwanted002.page/i_have_your_ip.mp4)"
+        "[UwU](https://files.mostwanted002.page/i_have_your_ip.mp4)",
+        "[Only solution](https://files.mostwanted002.page/solution.mp4)"
         ]
     dice = random.randint(0, 100000) % len(memes)
     return(memes[dice])
