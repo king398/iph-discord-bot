@@ -40,8 +40,8 @@ async def on_message(message):
         await message.reply("https://tenor.com/n1VZhJ8Bumt.gif")
     elif 'uwu' == message.content.lower():
         await message.reply("[UwU](https://files.mostwanted002.page/i_have_your_ip.mp4)")
-    elif str(message.author.id) == '85614143951892480':
-        await message.reply(["Chuppp bkl!! <:bahinchod:1076143675811319848>", "hhattt madarchod <:bahinchod:1076143675811319848>", "abeyy nikall lawde <:bahinchod:1076143675811319848>"][random.randint(0,2)])
+#    elif str(message.author.id) == '85614143951892480':
+#        await message.reply(["Chuppp bkl!! <:bahinchod:1076143675811319848>", "hhattt madarchod <:bahinchod:1076143675811319848>", "abeyy nikall lawde <:bahinchod:1076143675811319848>"][random.randint(0,2)])
     elif social_media[0]:
         new_message = ''
         if social_media[1] == "Twitter":
