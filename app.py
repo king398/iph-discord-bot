@@ -1,6 +1,6 @@
 import discord
 import os
-# import techpowerup as tpudb
+import techpowerup as tpudb
 from utils import *
 import logging
 import random
@@ -30,9 +30,6 @@ async def on_message(message):
     social_media = check_social(message.content)
     if message.author == bot.user:
         return
-    elif str(message.author.id) == '714745155835527198' and check_soy(message.content.lower()):
-        #        await message.reply("Cope, Mald, and Seethe Lodu")
-        await message.delete()
     elif "4090" in message.content and "melt" in message.content:
         await message.reply("Another one! <:xddICANT:1047485587688525874>")
     elif bot.user in message.mentions:
@@ -251,9 +248,11 @@ async def summarize(ctx, message_count: int):
 
     # Create a JSON object with sender:message format
     message_data = [{"sender": str(msg.author), "message": msg.content} for msg in messages]
+    # message numbers in the message
+
     message_json = json.dumps(message_data)
     model = genai.GenerativeModel('gemini-pro')
-    prompt = f"Please summarize the following conversation:\n\n{message_json}"
+    prompt = f"Please summarize the following conversation. If the conversation is long , please have a equally detailed summary:\n\n{message_json}"
     response = model.generate_content(prompt)
     try:
         summary = response.text
@@ -262,7 +261,12 @@ async def summarize(ctx, message_count: int):
         summary = f"Unsafe Message detected by the ministry of truth.Reporting to the nearest democracy officer"
     # defer the response to the user
 
-    await ctx.respond(f"Here's a summary of the last {message_count} messages:\n\n{summary}")
+    user = ctx.author
+    try:
+        await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}")
+        await ctx.respond("Summary sent as a direct message.")
+    except discord.Forbidden:
+        await ctx.respond("I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.")
 
 
 bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
