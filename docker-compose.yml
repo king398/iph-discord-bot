@@ -7,6 +7,7 @@ services:
       DISCORD_BOT_TOKEN: "${DISCORD_BOT_TOKEN}"
       MONGODB_PASSWORD: "${MONGODB_PASSWORD}"
       MONGODB_HOST: "${MONGODB_HOST}"
+      GOOGLE_API_KEY: "${GOOGLE_API_KEY}"
     restart: "always"
     depends_on:
       - mongo
