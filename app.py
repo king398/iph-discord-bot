@@ -241,8 +241,10 @@ etc.
 @bot.command(description="Summarize the last x messages in the channel.")
 async def summarize(ctx, message_count: int):
     # Retrieve the last x messages before the command
-    await ctx.response.defer()
+    if message_count>1000:
+        await ctx.respond("Can't summarize more than 1000 messages at the moment. SuperEarth is working on XXXL Weapons Bay.")
 
+    await ctx.response.defer()
     messages = await ctx.channel.history(limit=message_count + 1).flatten()
     messages = messages[1:]  # Exclude the command message itself
 
