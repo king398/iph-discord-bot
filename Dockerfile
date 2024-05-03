@@ -5,6 +5,7 @@ RUN useradd -m jeff &&\
 USER jeff
 WORKDIR /discord-bot
 COPY requirements.txt ./
+RUN pip3 install git+https://github.com/Pycord-Development/pycord
 RUN pip3 install -r requirements.txt
 COPY *.py ./
 RUN touch discord.log

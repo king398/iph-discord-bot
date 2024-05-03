@@ -235,16 +235,16 @@ etc.
  - **8** -> **2024**
  - **9** -> **2025**
 """
-    await ctx.respond(naming_scheme + "\n" + "https://files.mostwanted002.page/ryzen_mobile.jpg")
+    await ctx.respond(naming_scheme + "\n" + "https://files.mostwanted002.page/ryzen_mobile.jpg", ephemeral=True)
 
 
 @bot.command(description="Summarize the last x messages in the channel.")
 async def summarize(ctx, message_count: int):
     # Retrieve the last x messages before the command
-    if message_count>1000:
-        await ctx.respond("Can't summarize more than 1000 messages at the moment. SuperEarth is working on XXXL Weapons Bay.")
+    if message_count>500:
+        return await ctx.respond("Can't summarize more than 500 messages at the moment. SuperEarth is working on XXXL Weapons Bay.", ephemeral=True)
 
-    await ctx.response.defer()
+    await ctx.response.defer(ephemeral=True)
     messages = await ctx.channel.history(limit=message_count + 1).flatten()
     messages = messages[1:]  # Exclude the command message itself
 
@@ -260,15 +260,15 @@ async def summarize(ctx, message_count: int):
         summary = response.text
     except Exception as e:
         print(f"Error: {e}")
-        summary = f"Unsafe Message detected by the ministry of truth.Reporting to the nearest democracy officer"
+        summary = f"Unsafe Message detected by the ministry of truth. Reporting to the nearest democracy officer."
     # defer the response to the user
 
     user = ctx.author
     try:
         await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}")
-        await ctx.respond("Summary sent as a direct message.")
+        await ctx.respond("Summary sent as a direct message.", ephemeral=True)
     except discord.Forbidden:
-        await ctx.respond("I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.")
+        await ctx.respond("I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.", ephemeral=True)
 
 
 bot.run(os.environ.get('DISCORD_BOT_TOKEN'))

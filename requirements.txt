@@ -1,4 +1,4 @@
-py-cord
+#py-cord # Installing from Dockerfile command
 requests
 pycryptodome
 aiodns
