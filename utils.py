@@ -8,6 +8,8 @@ import random
 
 random.seed(open("/dev/urandom", "rb").read(16))
 
+
+
 class CPUDropdown(ui.Select):
     def __init__(self, cpu_list: list) -> None:
         self.options_list = []
@@ -96,3 +98,4 @@ def mentioned_me():
         ]
     dice = random.randint(0, 100000) % len(memes)
     return(memes[dice])
+

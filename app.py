@@ -4,6 +4,7 @@ import techpowerup as tpudb
 from utils import *
 import logging
 import random
+import sys
 from social_embeder import *
 # DEBUG from dotenv import load_dotenv
 import google.generativeai as genai
@@ -259,8 +260,11 @@ async def summarize(ctx, message_count: int):
     try:
         summary = response.text
     except Exception as e:
-        print(f"Error: {e}")
-        summary = f"Unsafe Message detected by the ministry of truth. Reporting to the nearest democracy officer."
+        sys.stderr.buffer.write(f"Error: {e}".encode())
+        if response.candidates:
+            summary = f"Unsafe message detected by the ministry of truth. Reporting to the nearest democracy officer.\nThe conversation contained a keyword that violated Gemini's safety ratings. Unfortunately, the exact keyword cannot be determined."
+        else:
+            summary = f"Summarization failed due to unknown errors at Gemini"
     # defer the response to the user
 
     user = ctx.author
