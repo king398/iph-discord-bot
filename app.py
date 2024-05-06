@@ -34,7 +34,7 @@ async def on_message(message):
     elif "4090" in message.content and "melt" in message.content:
         await message.reply("Another one! <:xddICANT:1047485587688525874>")
     elif bot.user in message.mentions:
-        await message.reply(mentioned_me())
+        await message.reply(mentioned_me(), ephemeral=True)
     elif '<@&1127987418197405807>' in message.content:
         await message.reply("Panch hazaar launde dikh jaane chahiye <:xdd666:1047058134486757417>")
     elif '<@&1158756290261160016>' in message.content:
@@ -61,6 +61,12 @@ async def on_message(message):
         webhooks = await message.channel.webhooks()
         for webhook in webhooks:
             await webhook.delete()
+
+
+
+@bot.event
+async def on_member_join(member):
+    await member.send(content="Welcome to the Indian PC Hardware Discord server!\nPlease go through the rules mentioned in <id:guide> and browse channles at <#1236943903693737994>.\n")
 
 
 ## Thermal paste command
