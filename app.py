@@ -2,6 +2,7 @@ import discord
 import os
 import techpowerup as tpudb
 from utils import *
+from datetime import timedelta
 import logging
 import random
 import sys
@@ -15,7 +16,8 @@ logger.setLevel(logging.INFO)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
-
+count = 0
+last_author = ''
 # DEBUG load_dotenv()
 
 bot = discord.Bot(command_prefix='?_', intents=discord.Intents.all())
@@ -28,13 +30,24 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    global count
+    global last_author
     social_media = check_social(message.content)
     if message.author == bot.user:
         return
     elif "4090" in message.content and "melt" in message.content:
         await message.reply("Another one! <:xddICANT:1047485587688525874>")
     elif bot.user in message.mentions:
-        await message.reply(mentioned_me(), ephemeral=True)
+        if count >= 0 and count <= 4:        
+            await message.reply(mentioned_me())
+            count += 1
+        if count >= 5:
+            await message.reply("Ffs stop spamming mentions! <:Madge:1047485310369542225> or you'll be timed out")
+            last_author = message.author
+            count = -1
+        if count == -1 and message.author == last_author:
+            await message.author.timeout_for(timedelta(seconds=60), reason="Spamming bot mentions")
+            count += 1
     elif '<@&1127987418197405807>' in message.content:
         await message.reply("Panch hazaar launde dikh jaane chahiye <:xdd666:1047058134486757417>")
     elif '<@&1158756290261160016>' in message.content:

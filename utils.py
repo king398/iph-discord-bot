@@ -7,8 +7,7 @@ from techpowerup import *
 import random
 
 random.seed(open("/dev/urandom", "rb").read(16))
-
-
+count = 0
 
 class CPUDropdown(ui.Select):
     def __init__(self, cpu_list: list) -> None:
