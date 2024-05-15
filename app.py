@@ -272,7 +272,7 @@ async def summarize(ctx, message_count: int):
     message_data = [{"sender": str(msg.author), "message": msg.content} for msg in messages]
     # message numbers in the message
 
-    message_json = json.dumps(message_data)
+    message_json = json.dumps(message_data[::-1])
     model = genai.GenerativeModel('gemini-1.5-pro-latest')
     prompt = f"Please summarize the following conversation. If the conversation is long , please have a equally detailed summary:\n\n{message_json}"
     response = model.generate_content(prompt)
