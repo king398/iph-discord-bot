@@ -325,11 +325,11 @@ async def summarize(ctx, message_count: int):
         HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
 
-    } )
+    })
     prompt = (f"Please summarize the following conversation.The following conversations might also include images."
               f"if given describe and summarize their role in the discord conversation too. If the conversation is long, please have an equally detailed summary:\n\n{message_json}")
     full_prompt = [prompt] + images_file_api[:64]
-    response = model.generate_content(full_prompt,)
+    response = model.generate_content(full_prompt, )
     shutil.rmtree(attachment_dir)
     for i in images_file_api:
         genai.delete_file(i.name)
@@ -345,7 +345,7 @@ async def summarize(ctx, message_count: int):
     user = ctx.author
     try:
         await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}"
-                        f"Model Used for Summarization: {model.model_name}.Please send any problems to the devs of this bot\n\n")
+                        f"Model Used for Summarization: {model.model_name.split('/')[-1]}. Please send any problems to the devs of this bot\n\n")
         await ctx.respond("Summary sent as a direct message.", ephemeral=True)
     except discord.Forbidden:
         await ctx.respond(
@@ -359,10 +359,14 @@ def add_watermark(image_path, sender):
 
     # Make the image editable
     txt = Image.new('RGBA', base.size, (255, 255, 255, 0))
+    d = ImageDraw.Draw(txt)
+
+    # Calculate the font size based on the image size (5% of the image's area)
+    image_area = width * height
+    font_size = int((image_area * 0.05) ** 0.5)
 
     # Choose a font and size
-    fnt = ImageFont.load_default(40)
-    d = ImageDraw.Draw(txt)
+    fnt = ImageFont.load_default(font_size)  # Ensure you have Arial font or replace with a path to a font file
 
     # Position the text at the bottom right
     text = f"Sent by: {sender}"
