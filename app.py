@@ -311,7 +311,7 @@ async def summarize(ctx, message_count: int):
         i = genai.get_file(i.name)
         while i.state.name == "PROCESSING":
             print('.', end='')
-            time.sleep(10)
+            time.sleep(1)
             i = genai.get_file(i.name)
             print(i.state.name)
 
@@ -319,7 +319,7 @@ async def summarize(ctx, message_count: int):
     model = genai.GenerativeModel('gemini-1.5-pro-latest', )
     prompt = (f"Please summarize the following conversation.The following conversations might also include images."
               f"if given describe and summarize their role in the discord conversation too. If the conversation is long, please have an equally detailed summary:\n\n{message_json}")
-    full_prompt = [prompt] + images_file_api[:32]
+    full_prompt = [prompt] + images_file_api[:64]
     response = model.generate_content(full_prompt, safety_settings={
         HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
