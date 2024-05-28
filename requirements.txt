@@ -10,3 +10,4 @@ pymongo
 selenium
 python-dotenv
 google-generativeai
+pillow

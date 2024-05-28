@@ -10,6 +10,13 @@ from social_embeder import *
 # DEBUG from dotenv import load_dotenv
 import google.generativeai as genai
 import json
+import glob
+import shutil
+from tqdm import tqdm
+import uuid
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
+from PIL import Image, ImageDraw, ImageFont
+import time
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
@@ -27,7 +34,6 @@ bot = discord.Bot(command_prefix='?_', intents=discord.Intents.all())
 async def on_ready():
     print(f"{bot.user} is ready and online!")
 
-
 @bot.event
 async def on_message(message):
     global count
@@ -38,7 +44,7 @@ async def on_message(message):
     elif "4090" in message.content and "melt" in message.content:
         await message.reply("Another one! <:xddICANT:1047485587688525874>")
     elif bot.user in message.mentions:
-        if count >= 0 and count <= 4:        
+        if count >= 0 and count <= 4:
             await message.reply(mentioned_me())
             count += 1
         if count >= 5:
@@ -76,10 +82,10 @@ async def on_message(message):
             await webhook.delete()
 
 
-
 @bot.event
 async def on_member_join(member):
-    await member.send(content="Welcome to the Indian PC Hardware Discord server!\nPlease go through the rules mentioned in <id:guide> and browse channles at <#1236943903693737994>.\n")
+    await member.send(
+        content="Welcome to the Indian PC Hardware Discord server!\nPlease go through the rules mentioned in <id:guide> and browse channles at <#1236943903693737994>.\n")
 
 
 ## Thermal paste command
@@ -219,7 +225,7 @@ Ryzen 5 7640U -> Form Factor
         |||----> Architecture
         ||-----> Market Segment
         |------> Portfolio Model Year
-```        
+```
 1. Form Factor:
  - **HX** -> **55W+** _(Max Performance)_
  - **HS** -> **~35W+** _(Thing Gaming/Creator)_
@@ -257,41 +263,117 @@ etc.
 """
     await ctx.respond(naming_scheme + "\n" + "https://files.mostwanted002.page/ryzen_mobile.jpg", ephemeral=True)
 
-
 @bot.command(description="Summarize the last x messages in the channel.")
 async def summarize(ctx, message_count: int):
-    # Retrieve the last x messages before the command
-    if message_count>500:
-        return await ctx.respond("Can't summarize more than 500 messages at the moment. SuperEarth is working on XXXL Weapons Bay.", ephemeral=True)
+    # Check message count limit
+    if message_count > 500:
+        return await ctx.respond(
+            "Can't summarize more than 500 messages at the moment. SuperEarth is working on XXXL Weapons Bay.",
+            ephemeral=True)
 
     await ctx.response.defer(ephemeral=True)
     messages = await ctx.channel.history(limit=message_count + 1).flatten()
     messages = messages[1:]  # Exclude the command message itself
 
     # Create a JSON object with sender:message format
-    message_data = [{"sender": str(msg.author), "message": msg.content} for msg in messages]
-    # message numbers in the message
+    message_data = []
+    attachment_dir = f"attachments_{str(uuid.uuid4())}"
+
+    if not os.path.exists(attachment_dir):
+        os.makedirs(attachment_dir)
+
+    for msg in messages:
+        message_dict = {"sender": str(msg.author), "message": msg.content}
+
+        if msg.attachments:
+            message_dict["attachments"] = []
+            for attachment in msg.attachments:
+                if attachment.filename.lower().endswith(
+                        ('png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'mp4', 'mov', 'avi')):
+                    file_path = os.path.join(attachment_dir, f"{str(uuid.uuid4())}_{attachment.filename}")
+
+                    # Save the attachment
+                    await attachment.save(file_path)
+
+                    # Add watermark
+                    if attachment.filename.lower().endswith(('png', 'jpg', 'jpeg', 'bmp', 'webp')):
+                        add_watermark(file_path, str(msg.author))
+
+                    message_dict["attachments"].append(file_path)
+
+        message_data.append(message_dict)
+    # paths to all the attachments
+    paths_attachment = glob.glob(f"{attachment_dir}/*")
+    images_file_api = []
+    for path in tqdm(paths_attachment):
+        images_file_api.append(genai.upload_file(path))
+    for i in images_file_api:
+        i = genai.get_file(i.name)
+        while i.state.name == "PROCESSING":
+            print('.', end='')
+            time.sleep(10)
+            i = genai.get_file(i.name)
+            print(i.state.name)
 
     message_json = json.dumps(message_data[::-1])
-    model = genai.GenerativeModel('gemini-1.5-pro-latest')
-    prompt = f"Please summarize the following conversation. If the conversation is long , please have a equally detailed summary:\n\n{message_json}"
-    response = model.generate_content(prompt)
+    model = genai.GenerativeModel('gemini-1.5-pro-latest', )
+    prompt = (f"Please summarize the following conversation.The following conversations might also include images."
+              f"if given describe and summarize their role in the discord conversation too. If the conversation is long, please have an equally detailed summary:\n\n{message_json}")
+    full_prompt = [prompt] + images_file_api[:32]
+    response = model.generate_content(full_prompt, safety_settings={
+        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+
+    })
+    shutil.rmtree(attachment_dir)
+    for i in images_file_api:
+        genai.delete_file(i.name)
     try:
         summary = response.text
     except Exception as e:
         sys.stderr.buffer.write(f"Error: {e}".encode())
         if response.candidates:
-            summary = f"Unsafe message detected by the ministry of truth. Reporting to the nearest democracy officer.\nThe conversation contained a keyword that violated Gemini's safety ratings. Unfortunately, the exact keyword cannot be determined."
+            summary = "Unsafe message detected by the ministry of truth. Reporting to the nearest democracy officer.\nThe conversation contained a keyword that violated Gemini's safety ratings. Unfortunately, the exact keyword cannot be determined."
         else:
-            summary = f"Summarization failed due to unknown errors at Gemini"
-    # defer the response to the user
+            summary = "Summarization failed due to unknown errors at Gemini."
 
     user = ctx.author
     try:
         await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}")
         await ctx.respond("Summary sent as a direct message.", ephemeral=True)
     except discord.Forbidden:
-        await ctx.respond("I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.", ephemeral=True)
+        await ctx.respond(
+            "I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.",
+            ephemeral=True)
+
+
+def add_watermark(image_path, sender):
+    base = Image.open(image_path).convert('RGBA')
+    width, height = base.size
+
+    # Make the image editable
+    txt = Image.new('RGBA', base.size, (255, 255, 255, 0))
+
+    # Choose a font and size
+    fnt = ImageFont.load_default(40)
+    d = ImageDraw.Draw(txt)
+
+    # Position the text at the bottom right
+    text = f"Sent by: {sender}"
+    bbox = d.textbbox((0, 0), text, font=fnt)
+    textwidth = bbox[2] - bbox[0]
+    textheight = bbox[3] - bbox[1]
+    x = width - textwidth - 10
+    y = height - textheight - 10
+
+    # Apply text to image
+    d.text((x, y), text, font=fnt, fill=(255, 255, 255, 128))
+
+    watermarked = Image.alpha_composite(base, txt)
+    watermarked = watermarked.convert('RGB')  # Remove alpha for saving in jpg format if needed
+    watermarked.save(image_path)
 
 
 bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
