@@ -344,13 +344,27 @@ async def summarize(ctx, message_count: int):
 
     user = ctx.author
     try:
-        await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}"
-                        f"Model Used for Summarization: {model.model_name.split('/')[-1]}. Please send any problems to the devs of this bot\n\n")
+        if len(summary) > 2000:
+            # Save summary to a text file
+            summary_file_path = f"summary_{str(uuid.uuid4())}.txt"
+            with open(summary_file_path, "w") as file:
+                file.write(f"Here's a summary of the last {message_count} messages:\n\n{summary}\n\n")
+                file.write(f"Model Used for Summarization: {model.model_name.split('/')[-1]}\n\n")
+                file.write("Please send any problems to the devs of this bot.\n")
+
+            # Send the text file as an attachment
+            await user.send("The summary is too long to send directly. Please find the summary attached.",
+                            file=discord.File(summary_file_path))
+            os.remove(summary_file_path)  # Clean up the file after sending
+        else:
+            await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}\n\n"
+                            f"Model Used for Summarization: {model.model_name.split('/')[-1]}\n\n"
+                            "Please send any problems to the devs of this bot.\n")
         await ctx.respond("Summary sent as a direct message.", ephemeral=True)
     except discord.Forbidden:
         await ctx.respond(
-            "I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.",
-            ephemeral=True)
+        "I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.",
+        ephemeral=True)
 
 
 
