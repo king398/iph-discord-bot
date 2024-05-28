@@ -353,34 +353,38 @@ async def summarize(ctx, message_count: int):
             ephemeral=True)
 
 
+
 def add_watermark(image_path, sender):
     base = Image.open(image_path).convert('RGBA')
     width, height = base.size
 
-    # Make the image editable
-    txt = Image.new('RGBA', base.size, (255, 255, 255, 0))
-    d = ImageDraw.Draw(txt)
+    # Create a new image with extra space at the bottom
+    new_height = height + 50  # Add 50 pixels for the black extension
+    new_base = Image.new('RGBA', (width, new_height), (0, 0, 0, 255))
+    new_base.paste(base, (0, 0))
 
-    # Calculate the font size based on the image size (5% of the image's area)
-    image_area = width * height
-    font_size = int((image_area * 0.05) ** 0.5)
+    # Make the new image editable
+    d = ImageDraw.Draw(new_base)
 
     # Choose a font and size
-    fnt = ImageFont.load_default(font_size)  # Ensure you have Arial font or replace with a path to a font file
+    font_size = 20
+    try:
+        fnt = ImageFont.truetype("arial.ttf", font_size)  # Ensure you have Arial font or replace with a path to a font file
+    except IOError:
+        fnt = ImageFont.load_default()
 
-    # Position the text at the bottom right
+    # Position the text in the black extension
     text = f"Sent by: {sender}"
     bbox = d.textbbox((0, 0), text, font=fnt)
     textwidth = bbox[2] - bbox[0]
     textheight = bbox[3] - bbox[1]
-    x = width - textwidth - 10
-    y = height - textheight - 10
+    x = (width - textwidth) / 2
+    y = height + (50 - textheight) / 2
 
     # Apply text to image
-    d.text((x, y), text, font=fnt, fill=(255, 255, 255, 128))
+    d.text((x, y), text, font=fnt, fill=(255, 255, 255, 255))
 
-    watermarked = Image.alpha_composite(base, txt)
-    watermarked = watermarked.convert('RGB')  # Remove alpha for saving in jpg format if needed
+    watermarked = new_base.convert('RGB')  # Remove alpha for saving in jpg format if needed
     watermarked.save(image_path)
 
 
