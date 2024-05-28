@@ -34,6 +34,7 @@ bot = discord.Bot(command_prefix='?_', intents=discord.Intents.all())
 async def on_ready():
     print(f"{bot.user} is ready and online!")
 
+
 @bot.event
 async def on_message(message):
     global count
@@ -263,6 +264,7 @@ etc.
 """
     await ctx.respond(naming_scheme + "\n" + "https://files.mostwanted002.page/ryzen_mobile.jpg", ephemeral=True)
 
+
 @bot.command(description="Summarize the last x messages in the channel.")
 async def summarize(ctx, message_count: int):
     # Check message count limit
@@ -316,7 +318,9 @@ async def summarize(ctx, message_count: int):
             print(i.state.name)
 
     message_json = json.dumps(message_data[::-1])
-    model = genai.GenerativeModel('gemini-1.5-pro-latest', )
+    model_choices = ['gemini-1.5-pro-latest', 'gemini-1.5-flash']
+    model = random.choice(model_choices)
+    model = genai.GenerativeModel(model, )
     prompt = (f"Please summarize the following conversation.The following conversations might also include images."
               f"if given describe and summarize their role in the discord conversation too. If the conversation is long, please have an equally detailed summary:\n\n{message_json}")
     full_prompt = [prompt] + images_file_api[:64]
@@ -341,7 +345,8 @@ async def summarize(ctx, message_count: int):
 
     user = ctx.author
     try:
-        await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}")
+        await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}"
+                        f"Model Used for Summarization: {model}.Please send any problems to the devs of this bot\n\n")
         await ctx.respond("Summary sent as a direct message.", ephemeral=True)
     except discord.Forbidden:
         await ctx.respond(
