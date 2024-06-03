@@ -39,6 +39,7 @@ async def on_ready():
     print(f"{bot.user} is ready and online!")
 
 
+
 @bot.event
 async def on_message(message):
     global count
