@@ -29,6 +29,10 @@ last_author = ''
 
 bot = discord.Bot(command_prefix='?_', intents=discord.Intents.all())
 
+allowed_image_types = ['png', 'jpg', 'jpeg', 'webp',]
+allowed_video_types = ['.mp4', '.mpeg', '.mov', '.avi', '.flv', '.mpg', '.webm', '.wmv', '.3gp']
+allowed_media_types = allowed_image_types + allowed_video_types
+
 
 @bot.event
 async def on_ready():
@@ -291,14 +295,14 @@ async def summarize(ctx, message_count: int):
             message_dict["attachments"] = []
             for attachment in msg.attachments:
                 if attachment.filename.lower().endswith(
-                        ('png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'mp4', 'mov', 'avi')):
+                        tuple(allowed_media_types)):
                     file_path = os.path.join(attachment_dir, f"{str(uuid.uuid4())}_{attachment.filename}")
 
                     # Save the attachment
                     await attachment.save(file_path)
 
                     # Add watermark
-                    if attachment.filename.lower().endswith(('png', 'jpg', 'jpeg', 'bmp', 'webp')):
+                    if attachment.filename.lower().endswith(tuple(allowed_image_types)):
                         add_watermark(file_path, str(msg.author))
 
                     message_dict["attachments"].append(file_path)
@@ -318,7 +322,7 @@ async def summarize(ctx, message_count: int):
             print(i.state.name)
 
     message_json = json.dumps(message_data[::-1])
-    model_choices = ['gemini-1.5-pro-latest', 'gemini-1.5-flash']
+    model_choices = ['gemini-1.5-flash']
     model = genai.GenerativeModel(random.choice(model_choices), safety_settings={
         HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
@@ -327,7 +331,7 @@ async def summarize(ctx, message_count: int):
 
     })
     prompt = (f"Please summarize the following conversation.The following conversations might also include images."
-              f"if given describe and summarize their role in the discord conversation too. If the conversation is long, please have an equally detailed summary:\n\n{message_json}")
+              f"if given describe and summarize their role in the discord conversation too. If the conversation is long, please have an equally detailed summary:\n\n{message_json}.Please be descriptive and accurate in your summary.")
     full_prompt = [prompt] + images_file_api[:64]
     response = model.generate_content(full_prompt, )
     shutil.rmtree(attachment_dir)
@@ -363,9 +367,8 @@ async def summarize(ctx, message_count: int):
         await ctx.respond("Summary sent as a direct message.", ephemeral=True)
     except discord.Forbidden:
         await ctx.respond(
-        "I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.",
-        ephemeral=True)
-
+            "I don't have permission to send you a direct message. Please enable direct messages from server members in your privacy settings.",
+            ephemeral=True)
 
 
 def add_watermark(image_path, sender):
@@ -383,7 +386,8 @@ def add_watermark(image_path, sender):
     # Choose a font and size
     font_size = 20
     try:
-        fnt = ImageFont.truetype("arial.ttf", font_size)  # Ensure you have Arial font or replace with a path to a font file
+        fnt = ImageFont.truetype("arial.ttf",
+                                 font_size)  # Ensure you have Arial font or replace with a path to a font file
     except IOError:
         fnt = ImageFont.load_default()
 
