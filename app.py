@@ -9,6 +9,7 @@ import sys
 from social_embeder import *
 # DEBUG from dotenv import load_dotenv
 import google.generativeai as genai
+from google.generativeai import upload_file
 import json
 import glob
 import shutil
@@ -17,6 +18,9 @@ import uuid
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from PIL import Image, ImageDraw, ImageFont
 import time
+from joblib import Parallel, delayed
+from concurrent.futures import ThreadPoolExecutor
+import asyncio
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
@@ -29,7 +33,7 @@ last_author = ''
 
 bot = discord.Bot(command_prefix='?_', intents=discord.Intents.all())
 
-allowed_image_types = ['png', 'jpg', 'jpeg', 'webp',]
+allowed_image_types = ['png', 'jpg', 'jpeg', 'webp', ]
 allowed_video_types = ['.mp4', '.mpeg', '.mov', '.avi', '.flv', '.mpg', '.webm', '.wmv', '.3gp']
 allowed_media_types = allowed_image_types + allowed_video_types
 
@@ -37,7 +41,6 @@ allowed_media_types = allowed_image_types + allowed_video_types
 @bot.event
 async def on_ready():
     print(f"{bot.user} is ready and online!")
-
 
 
 @bot.event
@@ -270,6 +273,16 @@ etc.
     await ctx.respond(naming_scheme + "\n" + "https://files.mostwanted002.page/ryzen_mobile.jpg", ephemeral=True)
 
 
+async def upload_files_async(paths):
+    with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
+        loop = asyncio.get_event_loop()
+        tasks = [
+            loop.run_in_executor(executor, upload_file, path)
+            for path in tqdm(paths)
+        ]
+        return await asyncio.gather(*tasks)
+
+
 @bot.command(description="Summarize the last x messages in the channel.")
 async def summarize(ctx, message_count: int):
     # Check message count limit
@@ -311,9 +324,8 @@ async def summarize(ctx, message_count: int):
         message_data.append(message_dict)
     # paths to all the attachments
     paths_attachment = glob.glob(f"{attachment_dir}/*")
-    images_file_api = []
-    for path in tqdm(paths_attachment):
-        images_file_api.append(genai.upload_file(path))
+    images_file_api = await upload_files_async(paths_attachment)
+
     for i in images_file_api:
         i = genai.get_file(i.name)
         while i.state.name == "PROCESSING":
@@ -349,7 +361,11 @@ async def summarize(ctx, message_count: int):
 
     user = ctx.author
     try:
-        if len(summary) > 2000:
+        try:
+            await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}\n\n"
+                            f"Model Used for Summarization: {model.model_name.split('/')[-1]}\n\n"
+                            "Please send any problems to the devs of this bot.\n")
+        except:
             # Save summary to a text file
             summary_file_path = f"summary_{str(uuid.uuid4())}.txt"
             with open(summary_file_path, "w") as file:
@@ -361,10 +377,7 @@ async def summarize(ctx, message_count: int):
             await user.send("The summary is too long to send directly. Please find the summary attached.",
                             file=discord.File(summary_file_path))
             os.remove(summary_file_path)  # Clean up the file after sending
-        else:
-            await user.send(f"Here's a summary of the last {message_count} messages:\n\n{summary}\n\n"
-                            f"Model Used for Summarization: {model.model_name.split('/')[-1]}\n\n"
-                            "Please send any problems to the devs of this bot.\n")
+
         await ctx.respond("Summary sent as a direct message.", ephemeral=True)
     except discord.Forbidden:
         await ctx.respond(
