@@ -5,6 +5,7 @@ from discord.interactions import Interaction
 from discord.ui.item import Item
 from techpowerup import *
 import random
+import requests
 
 random.seed(open("/dev/urandom", "rb").read(16))
 count = 0
@@ -20,16 +21,16 @@ class CPUDropdown(ui.Select):
                 description=f"Released in {cpu.released}"
             ))
         super().__init__(
-            placeholder="Following CPUs were found for your query", 
+            placeholder="Following CPUs were found for your query",
             min_values=1,
             max_values=1,
             options=self.options_list
-            )
-        
+        )
+
     async def callback(self, interaction: Interaction):
         await interaction.response.edit_message(content="Here is specs for selected CPU", embed=build_cpu_embed(cpu=self.mapped_options[self.values[0]]))
-        
-        
+
+
 class CPUSelectorView(ui.View):
     def __init__(self, cpu_list: list, *items: Item, timeout=30, disable_on_timeout=True):
         self.cpu_list = cpu_list
@@ -94,7 +95,26 @@ def mentioned_me():
         "[UwU](https://files.mostwanted002.page/i_have_your_ip.mp4)",
         "[Only solution](https://files.mostwanted002.page/solution.mp4)",
         "[moron potion chugger](https://files.mostwanted002.page/moron%20potion.mp4)"
-        ]
+    ]
     dice = random.randint(0, 100000) % len(memes)
     return(memes[dice])
 
+
+
+def vendor_list_embed():
+    embed = Embed(
+        title="List of Legit Indian PC Hardware & Peripherals Stores",
+        color = Color.light_grey()
+    )
+    embed.description = requests.get('https://gitlab.com/-/snippets/3719477/raw/main/main.txt').text
+    return embed
+
+def create_embed(embedTitle: str, content: str, image_url: str=None):
+    embed = Embed(
+        title = embedTitle,
+        color = Color.light_grey()
+    )
+    embed.description = content
+    if image_url != None:
+        embed.set_image(url=image_url)
+    return embed

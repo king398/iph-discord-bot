@@ -1,0 +1,616 @@
+{
+    "commands":{
+        "clearcmos" : {
+            "description": "",
+            "title": "",
+            "content":"If your motherboard has a Clear CMOS button on the motherboard I/O, use that as instructed in the motherboard manual, else locate CLEAR CMOS pins on your motherboard (refer your motherboard's manual for motherboard layout. They are usually named as CLR_CMOS, CLRCMOS1, CLRRTC, etc. depending on the motherboard vendor.) and follow the steps below.\n1. Turn off your PC.\n2. Disconnect your PC from AC Mains (Disconnect PSU from wall outlet).\n3. Press and hold power button for 5-10 seconds to flush power from the system.\n4. Take a screw driver and short the Clear CMOS pins for 2-3 seconds.\n5. Connect your PSU back to wall outlet.\n6. Turn on the PC. You should be greeted with BIOS screen requesting action for further setup.",
+            "image_url": null
+        },
+        "ryzenmobile" : {
+            "description": "",
+            "title": "",
+            "content": "## Ryzen Mobile CPU/APU Naming Guide\r\n\r\n```\r\nRyzen 5 7640U -> Form Factor\r\n        ||||---> Feature Isolation\r\n        |||----> Architecture\r\n        ||-----> Market Segment\r\n        |------> Portfolio Model Year\r\n```\r\n1. Form Factor:\r\n - **HX** -> **55W+** _(Max Performance)_\r\n - **HS** -> **~35W+** _(Thing Gaming/Creator)_\r\n - **U** -> **15-28W** _(Premium Ultrathin)_\r\n - **C** -> **15-28W** _(Chromebook)_\r\n - **e** -> **9W** _(Fanless variant of 'U')_\r\n2. Feature Isolation:\r\n - **0** -> _Lower Model within segment_\r\n - **5** -> _Upper Model within segment_\r\n3. Architecture:\r\n - **1** -> **Zen1** | **Zen+**\r\n - **2** -> **Zen2**\r\n - **3** -> **Zen3** | **Zen3+**\r\n - **4** -> **Zen4**\r\n - **5** -> **Zen5**\r\netc.\r\n4. Market Segment:\r\n - **1** -> **Athlon Silver**\r\n - **2** -> **Athlon Gold**\r\n - **3** -> **Ryzen 3**\r\n - **4** -> **Ryzen 3**\r\n - **5** -> **Ryzen 5**\r\n - **6** -> **Ryzen 5**\r\n - **7** -> **Ryzen 7**\r\n - **8** -> **Ryzen 7/9**\r\n - **9** -> **Ryzen 9**\r\n5. Portfolio Model Year:\r\n - **7** -> **2023**\r\n - **8** -> **2024**\r\n - **9** -> **2025**",
+            "image_url" : "https://files.mostwanted002.page/ryzen_mobile.jpg"
+        },
+        "aioorientation" : {
+            "description": "Best AIO Orientation",
+            "title": "How to orient your radiator the correct way",
+            "content": "Refer to the image below on correct radiator placement orientation. Note the blue part is marked where the air will settle in the loop which you want to avoid settling in the pump. For units whose pump is in the tubes or radiator, ideal orientation to avoid air within the pump will differ from this image.",
+            "image_url": "https://commands.discord.eegras.com//command_images/aio_orientation.png"
+        },
+        "airflow" : {
+            "description": "Case / Fan airflow and orientation guide",
+            "title": "Case / Fan airflow and orientation guide",
+            "content": "",
+            "image_url": "https://commands.discord.eegras.com//command_images/airflowv2.png"
+        },
+        "biosupdate" : {
+            "description": "How do I update my BIOS?",
+            "title": "How do I update my BIOS?",
+            "content": "### How do I update my BIOS?\r\n_**Disclaimer**: You are responsible for making sure that you use the correct files and that you do not attempt to flash your BIOS during a thunderstorm or situation that can cause a power outage._\r\nTo update your BIOS, go to your motherboard's product page and go to the downloads or support section. Here you will find a variety of downloads, including BIOS files. Note, these files might be listed as an item under \"All\" operating systems. Download the latest version, and be sure to check for a required sequence of updates on some boards. Extract the downloaded zip file onto a USB stick formatted as FAT32. Boot into your BIOS and select the flashing utility in your BIOS. Within the utility, choose the BIOS file from your flash drive and start the flashing process.\r\n> Note: Your motherboard manual will have specific instructions on how to update your BIOS. You can find your manual online on the same product page under \"Manuals.\"",
+            "image_url": null
+        },
+        "bottleneck" : {
+            "description": "The concept of 'bottlenecking'...",
+            "title": "The concept of 'bottlenecking'...",
+            "content": "Bottlenecks are physically impossible to measure and/or quantify. So those \"bottleneck calculators\" are always unreliable.\r\n1. A bottleneck is quite literally always present, and that's not always a bad thing.\r\n2. A bottleneck does not harm components.\r\n3. Typically, modern hardware paired with other modern hardware doesn't lead to any \"severe\" bottleneck of any kind.\r\n> TL;DR Don't worry about bottlenecks. They aren't nearly as big of an issue as they are sometimes made out to be\r\nIf you have a strong GPU, run at a higher resolution using down sampling to get a better picture than usual. If you have a strong CPU, you can change settings to get more frames.",
+            "image_url": null
+        },
+        "breadboarding" : {
+            "description": "What is breadboarding?",
+            "title": "What is breadboarding?",
+            "content": "What is breadboarding?\",\"\"\"\r\nBreadboarding is the process of bringing a system to its core components to aid in the troubleshooting process and eliminate any unneeded variables.\r\nA quick summary of the steps is removing everything out of the case and placing the motherboard on a non-conductive, clean surface and only connecting things essential for display output.\r\nNOTE: Some anti-static bags are conductive on the outside. Do not use these bags as a surface for components.\r\nThe full instructions for breadboarding are found at [this thread on whatthetech.com](https://forums.whatthetech.com/index.php?showtopic=120814).",
+            "image_url": null
+        },
+        "btheadset" : {
+            "description": "Bluetooth Headset Low Quality Audio",
+            "title": "Prevent Windows from using lower quality audio for Bluetooth headsets (not headphones)",
+            "content": "**NOTE: This will disable the microphone in your Bluetooth device.**\r\n1. Pair and connect BT device\r\n2. [winkey] + [R], then enter shell:::{A8A91A66-3A7D-4424-8D24-04E180695C7A} and then click OK\r\n3. Right click your BT device then choose \"Properties\"\r\n4. Click on the \"Services\" tab\r\n5. Uncheck \"Handsfree Telephony\"\r\n6. Click \"OK\"\r\nYou may need to reboot.",
+            "image_url": null
+        },
+        "buildask" : {
+            "description": "What details should I provide for build recommendations?",
+            "title": "What details should I provide for build recommendations?",
+            "content": "__PLEASE READ AND FOLLOW THESE FORMAT__***\r\n***__For help with a new build:__***\r\n\u2022 **What will you be doing with this PC?**\r\nBe as specific as possible, and include specific games or programs you will be using.\r\n\u2022 **What is your maximum budget?**\r\n\u2022 **When do you plan on building/buying the PC?**\r\nDo note, beyond a week or two from today means any build you receive will be out of date when you want to buy.\r\n\u2022 **What, exactly, do you need included in the budget?**\r\nLike peripherals and monitor.\r\n\u2022 **Which state/city will you be purchasing the parts in? State your preference for online or offline.**\r\n\u2022 **If reusing any components, what parts will you be reusing? List brands and models**\r\n\u2022 **Will you be overclocking? If yes, are you interested in overclocking right away, or down the line? CPU and/or GPU**\r\n\u2022 **Do you have any specific preferences?**\r\nSize like ITX, RGB lighting, etc or a particular color theme preference for the componentsbuild-help-and-advice\r\n\u2022 **Extra info or particulars: If you already have a build or certain components in mind or shortlisted, state them here.**",
+            "image_url": null
+        },
+        "canihaverole" : {
+            "description": "Verified Builders?",
+            "title": "Who are the Verified Builders? Can you have the role?",
+            "content": "The `@Verified Builders` are those who contribute to the \"builds\" forum in our discord server and page on the subreddit.\r\nThe staff members and others with the role chose them for the reasons mentioned.\r\nTL;DR, they know what they are doing and don't ask for the role, it is earned, not asked for.",
+            "image_url": null
+        },
+        "casesata" : {
+            "description": "Cable dangling from Case",
+            "title": "What on earth is this cable dangling from my case?!?",
+            "content": "This cable is called a SATA female cable that is generally used to power Case Fan Hubs or RGB hubs integrated / included with the case. Refer to the image for clarification.",
+            "image_url": "https://commands.discord.eegras.com//command_images/sata_power.jpg"
+        },
+        "cat" : {
+            "description": "Ethernet Cable Ratings",
+            "title": "What are the \"CAT\" ratings on ethernet cables?",
+            "content": "CAT Cable ratings, such as Cat5e, Cat6/a, Cat7, and Cat 8, are used to signify the resilience to interference, quality, and a maximum bandwidth over a distance of an ethernet cable.\r\nIn short summary:\r\n- Cat5 - 100 mbps over 100 meters.\r\n- Cat5e - 1 gbps over 100 meters.\r\n- Cat6 - 10 gbps over 55 meters.\r\n- Cat6a - 10 gbps over 100 meters.\r\n- Cat7 - 10 gbps over 100 meters. This is not a ratified standard and quality and performance will differ and shouldn't be used.\r\n- Cat8 - 25-40gbps over 100 meters.\r\nThe biggest difference between Cat 5e and 6 are the individual twisted pairs are often shielded with foil. Cat 6a and 7 are similar in that the cable is shielded and foiled even more. Cat 7 to 8 is also more shielding overall using foil and braids.\r\nOverall, for your home network, you do not need more than Cat 5e or Cat 6a. Anything higher is generally going to be more costly than worthwhile with no real gains.",
+            "image_url": "https://www.cablematters.com/Blog/image.axd?picture=/How%20long%20can%20Ethernet%20Be%202.jpg"
+        },
+        "cdi" : {
+            "description": "CrystalDiskInfo",
+            "title": "CrystalDiskInfo Download link",
+            "content": "Download the latest CrystalDiskInfo installer from [CrystalMark.Info](https://crystalmark.info/en/software/crystaldiskinfo/).\r\nThe \"Shizuku\" and \"Kurei Kei\" versions are identical to Standard, but with anime girls.\r\nCrystalDiskMark is a different program, for benchmarking.",
+            "image_url": null
+        },
+        "cmrsmr" : {
+            "description": "CMR vs SMR for HDD",
+            "title": "What is the deal with CMR and SMR?",
+            "content": "The differences in Shingled Magnetic Recording (SMR) and Conventional Magnetic Recording (CMR) are associated primarily with use and latency.\r\nSMR has the tracks similar to roofing shingles to increase density, but due to the size of the Read-Write head, data must first be read from next to where the data is about to be written due to the layout of the tracks.\r\nCMR, on the other hand, is the standard flat track design thought of for HDDs.\r\nAs a result of how SMR is managed, it performs worse on data that is constantly being written to randomly, resulting in worse performance on the random writes. This is an issue with storage arrays where storage is consistently being written and shifted around but is not an issue in more mundane or archival purposes. In common consumer use cases, such as office work and gaming, this is **not** an issue.",
+            "image_url": null
+        },
+        "commonsense" : {
+            "description": "Common Sense isn't Common",
+            "title": "What is Common Sense?",
+            "content": "Common Sense is sound logic with practical and good reasoning. It is searching for simple but very useful ways of making decisions to solve problems. We are all born with the ability to think, create, and solve problems.\r\nCommon sense lives by the rule of thinking before you act. It helps us to see what can become of something like George Washington Carver did, who saw how practical resources could benefit many people in the world.\r\nCommon sense is not solely about using our minds to think of cool or witty inventions that will make us lots of money. It is about making wise decisions that affect our lives. When we lack common sense, we make decisions based on emotions rather than logic.",
+            "image_url": null
+        },
+        "cpuboost" : {
+            "description": "Know about CPU Boost clocks and behavior",
+            "title": "What is turbo boosting?",
+            "content": "With processors, there are two general frequency specifications, base frequency and turbo or boost frequency. Base frequency, the normal maximum operating frequency of the cores in the processor, while the turbo frequency is the maximum speed of one or two cores under ideal conditions.\r\nWhat this means is that the processor will only go to the maximum frequency if there is a workload that uses only one or two cores, depending on the processor, and if certain factors are met. Those factors include:\r\n- Overall cooling performance for the CPU and system\r\n- Available power to the system\r\n- Motherboard design\r\n- BIOS settings and version\r\n- The operating system\r\n- AMD Chipset Driver (For AMD Processors)\r\nOverall, you are not loosing performance or dropping frames because you are not reaching the boost frequency. It is there to help when possible for tasks that need that extra performance on one or two cores. In many modern loads like games or rendering, the performance \"gains\" come from running the load across multiple cores, not because it has a higher frequency.",
+            "image_url": null
+        },
+        "cpuz" : {
+            "description": "CPU-Z",
+            "title": "CPU-Z Download link",
+            "content": "CPU-Z is a tool by CPUID that displays system information. Download the latest installer from [CPUID's official download page](https://www.cpuid.com/softwares/cpu-z.html).",
+            "image_url": null
+        },
+        "ddr" : {
+            "description": "DDR for System Memory",
+            "title": "Why is my RAM showing a really low number?",
+            "content": "Your memory is reporting at half its speed due to how software can interpret the Double Data Rate memory. This is commonly seen with multiple sticks of memory as the frequency is 'split' between the sticks.\r\nAn example is your software showing the speed at 1066Mhz. Multiply this by 2 and you will see your memory is at 2133Mhz.\r\nWith common XMP speeds such as 3200Mhz, you would see 1600Mhz reported.\r\nYou can run `wmic memorychip get speed` in the Command Prompt to see the full reported speed vs. the adjusted speed.",
+            "image_url": null
+        },
+        "ddrjedec" : {
+            "description": "Info about DDR JEDEC",
+            "title": "What is JEDEC",
+            "content": "With DDR4 systems, you may notice that on your first boot, your memory is running at 2133, 2400 Mhz, 2666 Mhz, or even 2933Mhz on with some CPUs, when you have higher frequency memory, such as 3200Mhz. This is due to what's known as the \"JEDEC Standard.\" This standard is made so that your system will turn on and function with fewer issues. If your memory were to operate at its full speed on the first boot, then it could lead to diagnostic headaches due to a system not working well with the high-speed memory. To get your memory to its full speed, use your memory's XMP profile(s).",
+            "image_url": null
+        },
+        "dduhow" : {
+            "description": "Display Driver Uninstaller",
+            "title": "Display Driver Uninstaller Instructions",
+            "content" : "DDU allows you to fully uninstall GPU and audio drivers, beyond what the first-party tools will do. This helps the troubleshooting process greatly. To use it:\r\n1. [Download DDU from Guru3D](https://www.guru3d.com/files-details/display-driver-uninstaller-download.html#menu4). Scroll down to the bottom and select a Download Mirror close to you. Do not start DDU yet.\r\n2. Download the latest driver for your GPU from [Nvidia](https://www.nvidia.com/Download/index.aspx), [AMD](https://www.amd.com/en/support), or [Intel](https://downloadcenter.intel.com/product/80939/Graphics).\r\n3. Boot Windows into Safe Mode. To do so, open the Start menu, click the Power option. Click Restart while holding Shift (and keep holding it). You should arrive at a blue screen with multiple options.\r\n4. From there, click Troubleshoot > Advanced Options > Startup Settings, and click on Restart. Press 4 to boot into Safe Mode.\r\n5. While in Safe Mode, run DDU and click on Clean and Restart.\r\n6. Install the driver you downloaded earlier.",
+            "image_url": null
+        },
+        "dns" : {
+            "description": "DNS Configuration and Troubleshooting",
+            "title": "How to change your DNS server",
+            "content" : "If you're troubleshooting network issues, it can sometimes help to change your DNS server to something other than the default value.\r\n- [Guide for Windows 10](https://www.windowscentral.com/how-change-your-pcs-dns-settings-windows-10)\r\n- [Guide for Windows 11](https://www.windowscentral.com/software-apps/windows-11/how-to-set-different-dns-settings-on-devices-running-windows-11)\r\n- [Guide for macOS](https://support.apple.com/guide/mac-help/change-dns-settings-on-mac-mh14127/mac)\r\nSome popular IPv4 DNS servers are:\r\n8.8.8.8 ([Google DNS](https://dns.google/)),\r\n1.1.1.1 ([CloudFlare](https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/))\r\n9.9.9.9 ([Quad9](https://www.quad9.net/)).\r\nFor more privacy-conscious alternatives, including those with ad-filtering, see [Privacy Guides list of DNS resolvers](https://www.privacyguides.org/en/dns/).",
+            "image_url": null
+        },
+        "dramssd" : {
+            "description": "DRAM vs DRAM-less SSDs",
+            "title": "How does DRAM impact performance of SSDs?",
+            "content" : "TL;DR - DRAM on modern SSDs does not matter performance wise, but DRAM on an SSD helps reduce extra writes from background management on the SSD, improving lifespan and initial write performance.\r\nDRAM in SSDs serves as a location for the SSD to store the data map of where everything is located on the SSD and serves as a cache for data being written to the drive. This data will regularly change as the SSD shuffles the data around to help prevent a cell of flash from wearing out ahead of the other cells. When there is no DRAM on the SSD, also referred to as DRAM-less SSDs, the data map is stored in system memory or stored on the actual flash cells, which reduces the overall performance of the SSD. However, with the impressive endurance ratings of modern SSDs this extra wear is negligible.\r\nIn NVMe drives, DRAM vs. DRAM-less does not have a relevant impact on performance due to the better optimization of modern DRAM-less drives, and drive wear will not matter to regular users.",
+            "image_url": null
+        },
+        "driveclone" : {
+            "description" : "Drive cloning guide",
+            "title" : "How do you clone a drive?",
+            "content" : "You are able to clone drives to migrate operating systems using various software such as [Macrium Reflect](https://www.macrium.com/reflectfree), [AOMEI Backupper](https://www.ubackup.com/free-backup-software.html) or [EaseUS Disk Copy](https://www.easeus.com/disk-copy/index.htm).\r\nThe target drive must be at least as large as the drive being cloned.\r\nNote that you may encounter issues (boot failures, OS stability issues) when cloning from a hard drive to a solid-state drive, usually caused by the different block sizes.\r\nThe instructions to clone a drive using above softwares are found at\r\n- [Cloning a disk with Macrium reflect](https://knowledgebase.macrium.com/display/KNOW7/Cloning+a+disk)\r\n- [AOMEI Backupper Standard guides](https://www.ubackup.com/help)\r\n- [EaseUS Disk Copy Help](https://www.easeus.com/support/disk-copy/index.html).",
+            "image_url" : null
+        },
+        "driverupdater" : {
+            "description" : "Do not use third-party driver installers!",
+            "title" : "Do not use third-party driver installers!",
+            "content" : "Don't use third-party driver updaters, downloaders, verifiers, or management tools. These can contain malware, spyware, or adware, or bundle additional software you don't want. The drivers installed could be outdated, or have additional injected.\r\nOnly install device drivers downloaded directly from the manufacturer's website (e.g. Asus, Intel, Realtek, Nvidia, AMD, Biostar, etc.).",
+            "image_url" : null
+        },
+        "drivespace" : {
+            "description" : "How do I find what's using my drive space?",
+            "title" : "How do I find what's using my drive space?",
+            "content" : "There are multiple pieces of software recommended to find large directories or files that are eating up your drive space. In no particular order:\r\n- [TreeSize Free](https://www.jam-software.com/treesize_free)\r\n- [Wiztree](https://diskanalyzer.com/download)\r\n- [SpaceMonger](https://www.stardock.com/products/spacemonger/)\r\n- [WinDirStat(slow, not better)](https://windirstat.net/download.html)",
+            "image_url" : "https://commands.discord.eegras.com//command_images/fan_header.jpg"
+        },
+        "fanconnector" : {
+            "description" : "How to connect a 3-pin or 4-pin FAN to the motherboard",
+            "title" : "How to connect a 3-pin or 4-pin FAN to the motherboard",
+            "content" : "Guide on how to connect fans to motherboard fan headers: [How to connect a 3 pin or 4 pin fan to the motherboard \u2013 Cooler Master FAQ](https://landing.coolermaster.com/faq/how-to-connect-a-3-pin-or-4-pin-fan-to-the-motherboard/). The image below demonstrates you can plug a 3-pin fan connector to a 4-pin fan header on the motherboard.",
+            "image_url" : null
+        },
+        "fandaisychain" : {
+            "description" : "Fan daisy chaining",
+            "title" : "Fan daisy chaining",
+            "content" : "Refer to the image below:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/fan_daisychain.gif"
+        },
+        "fanorientation" : {
+            "description" : "Fan Orientation",
+            "title" : "Fan Orientation",
+            "content" : "Which direction do the fans blow air? Refer to the following image:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/airflowdirection.png"
+        },
+        "fantable" : {
+            "description" : "Fan Table",
+            "title" : "Fan Table",
+            "content" : "Here is a table of recommended fans:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/fan_guide_new.png"
+        },
+        "firstdrivers" : {
+            "description" : "First Drivers after Fresh Windows",
+            "title" : "What drivers do I need to download?",
+            "content" : "With a new system, a few drivers need to be installed.\r\nThe following drivers are downloaded from your motherboard's support page: Audio, LAN/Wifi.\r\nGPU Drivers are retrieved from [Nvidia](https://www.nvidia.com/Download/index.aspx), [AMD](https://www.amd.com/en/support), or [Intel](https://downloadcenter.intel.com/product/80939/Graphics)'s website. With Nvidia, use the 'Game-Ready Driver' unless you are doing productivity work.\r\nOn AMD Ryzen and Threadripper systems, you will need to download the chipset drivers from [AMD's website](https://www.amd.com/en/products/chipsets-motherboards-desktop).",
+            "image_url" : null
+        },
+        "fpanel" : {
+            "description" : "Front panel connector guide",
+            "title" : "Front panel connector guide",
+            "content" : "The below diagram shows the layout for the most common front panel connector. If your connector has additional pins on the right side, simply ignore them. The HDD and power light connectors (HDD_LED and PW_LED) are polarized, and must be oriented correctly. The power and reset switches can be connected in either orientation, just make sure they're in the right place.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/fpanel.png"
+        },
+        "freedomofspeech" : {
+            "description" : "Free speech does not mean zero consequence",
+            "title" : "Free speech does not mean zero consequence",
+            "content" : "",
+            "image_url" : "https://commands.discord.eegras.com//command_images/free_speech.png"
+        },
+        "gptmbr" : {
+            "description" : "GPT vs MBR",
+            "title" : "GPT vs MBR",
+            "content" : "GPT and MBR are both ways that partitions are stored and catalogued on drives. At a high level, there are a few keys differences. MBR is limited to 2TB per drive, four partitions, and is used by older operating systems and BIOSes. GPT is the \"upgraded MBR\" in which there is a maximum of one billion terabytes per drive, 128 partitions, and is only usable by more modern operating systems and UEFI's. Today, unless you have a system from before 2010, use GPT as it is the newer standard to use.\r\nTL;DR: Just use GPT.",
+            "image_url" : null
+        },
+        "headsetmic" : {
+            "description" : "Mic on headset not working?",
+            "title" : "Your new headset only works as headphones?",
+            "content" : "Some headphone/microphone combination devices, or \"headset\", use a single connector to connect to your device. Most PCs require the headphone and microphone parts to be separate plugs (green and pink plugs).\r\nReview the image below. Most PCs require a TRS connector and your headset may have a TRRS connector. You need a \"Female TRRS to Male TRS Splitter\" like [this one from Amazon](https://amzn.in/d/04WYZEt5).",
+            "image_url" : "https://commands.discord.eegras.com//command_images/trs_trrs_headphone_jack.png"
+        },
+        "highmonitor" : {
+            "description" : "How do I set my monitor to a higher refresh rate?",
+            "title" : "How do I set my monitor to a higher refresh rate?",
+            "content" : "You may have a high refresh rate monitor such as a 120, 144, or 240 Hz monitor, and it is showing as 60 Hz. This is a default setting to make sure your monitor is able to output during the first connections. For the monitor to display the higher refresh rate, specific criteria need to be met. The monitor, display interface on the monitor, the display cable, the display interface on the computer all need to support the higher refresh rate at the monitor's resolution.\r\nSome monitors only support the higher refresh rate over a specific interface, which can be determined in the monitor's manual.\r\nAfter determining that each part of the link supports the resolution and refresh rate, go into Nvidia Control Panel, AMD Catalyst Control Center, Windows Display Settings, or Display Adapter Settings to set the monitor to the correct refresh rate and resolution.\r\nIf the monitor is still unable to be set to the correct resolution and refresh rate, include your monitor's model number, GPU, which specific cable is used, any adapters used, and what has been done to set the resolution.",
+            "image_url" : null
+        },
+        "hwinfo" : {
+            "description" : "HWiNFO download link",
+            "title" : "HWiNFO download link",
+            "content" : "HWiNFO is a system monitoring tool. Download the latest installer from [FossHub](https://www.fosshub.com/HWiNFO.html) or [HWiNFO's download page](https://www.hwinfo.com/download/).",
+            "image_url" : null
+        },
+        "idletemp" : {
+            "description" : "Are my idle temperatures ok?",
+            "title" : "Are my idle temperatures ok?",
+            "content" : "The idle temperature of your components does not matter, and unrelated external factors will sway idle temperatures much more than temps under load. Unless your idle temps are regularly above 70C, stop worrying!\r\nNOTE: Many high-end AM5 CPUs will automatically boost themselves until they reach 95C, so check respected review outlets to see if your cpu has this behavior.",
+            "image_url" : null
+        },
+        "justask" : {
+            "description" : "Just ask your question!",
+            "title" : "Just ask your question!",
+            "content" : "Someone who is idling on the channel and only occasionally glances at what's going on is unlikely to answer your \"asking to ask\" question, but an actual description of your problem may pique their interest and get them to answer.\r\nSee also: Nerd Sniping, XY Problem [https://dontasktoask.com](https://dontasktoask.com/)",
+            "image_url" : null
+        },
+        "keyboardsize" : {
+            "description" : "What different keyboard sizes are there?",
+            "title" : "What different keyboard sizes are there?",
+            "content" : "The two most common sizes are Full-sized 100% and TKL 80%. Other sizes are provided in the image below:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/keyboard-layouts.jpg"
+        },
+        "m2install" : {
+            "description" : "How to install an M.2 SSD into a motherboard?",
+            "title" : "How to install an M.2 SSD into a motherboard?",
+            "content" : "Refer to the image below:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/m2connector.png"
+        },
+        "m2sizes" : {
+            "description" : "What different M.2 sizes are there?",
+            "title" : "What different M.2 sizes are there?",
+            "content" : "M.2 SSDs come in a standard size of 2280 for desktop consumer SSDs. Here are the different sizes you may see them in:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/m2-sizes.jpg"
+        },
+        "manual" : {
+            "description" : "Where can I find my manual?",
+            "title" : "Where can I find my manual?",
+            "content" : "You can find your manual online by searching for the model number of the device or part and going to the support page. The manual will be under the download section for most companies.\r\nYou can also find the manual by searching the model number, followed by 'manual.'",
+            "image_url" : null
+        },
+        "mbguide" : {
+            "description" : "Motherboard quick start guide",
+            "title" : "Motherboard quick start guide",
+            "content" : "Refer to the image below:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/motherboard_guide.png"
+        },
+        "mbr2gpt" : {
+            "description" : "How do I convert a drive from MBR to GPT without data loss?",
+            "title" : "How do I convert a drive from MBR to GPT without data loss?",
+            "content" : "To convert your drive(s) from MBR to GPT follow this guide: [How to Convert the System from Legacy BIOS mode to UEFI mode after Installing Windows \u2013 Intel Support](https://www.intel.com/content/www/us/en/support/articles/000024558/memory-and-storage/intel-optane-memory.html). Note that this should not be used on non-UEFI capable systems.",
+            "image_url" : null
+        },
+        "memtest" : {
+            "description" : "Description",
+            "title" : "Title",
+            "content" : "Content Soon :tm:",
+            "image_url" : null
+        },
+        "modular" : {
+            "description" : "What is the difference between Modular, Semi-Modular and Fully Modular?",
+            "title" : "What is the difference between Modular, Semi-Modular and Fully Modular?",
+            "content" : "Refer to the image below:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/modular.png"
+        },
+        "motherboardsize" : {
+            "description" : "What different motherboard sizes are there?",
+            "title" : "What different motherboard sizes are there?",
+            "content" : "The two most common sizes are mATX suited for budget and compact computer builds and ATX which are suited for mid-tower ATX cases. It is recommended to check with the case for motherboard size compatibility. For other different sizes refer to the image:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/motherboard-sizes.png"
+        },
+        "netreset" : {
+            "description" : "Resetting the Windows Network Stack",
+            "title" : "Resetting the Windows Network Stack",
+            "content" : "In an admin command prompt or admin powershell window, run the following:\r\n```powershell\r\nnetsh winsock reset\r\nnetsh int ip reset\r\nipconfig /release\r\nipconfig /renew\r\nipconfig /flushdns\r\n```\r\nTo start an admin command prompt, press WindowsKey+R and enter `cmd`. Press Ctrl+Shift+Enter and it will start it in admin mode. To open an admin powershell window, replace `cmd` with `powershell`",
+            "image_url" : null
+        },
+        "networkhelp" : {
+            "description" : "Network Help",
+            "title" : "What can you provide to get the best and fastest help with a networking related issue?",
+            "content" : "If you are having networking issues, it is best to provide as many accurate details as possible to receive the quickest and most effective help.\r\n**Have these details in a SINGLE message**\r\nInclude all of the following details:\r\n- The model of computer or a list of the parts used in the computer/device and the age of the afflicted system\r\n- A list of all networking gear you are using including model numbers. (Router, Modem/Gateway, Switches, Wireless Adapters, Network Cards)\r\n- If you are using any powerline or MoCa Adapters.\r\n- If it is only a single device with the issue or many on the network.\r\n- Any errors you are receiving.\r\n- If the issue is with your internet, list your ISP, connection type (Fibre, Cable, Microwave, DSL), and the plan you pay for.\r\n- If the issue is with a wireless network, list the frequency you are running on, the wireless network adapters used, where the adapters are plugged into, and any extenders, repeaters, or access points used.\r\n- If the issue is with a specific service or application, then provide the name of that service/application and any associated configurations.\r\n- Any patterns (such as time, activity, usage, etc) associated with the issue.\r\n- **List any other details you find may be relevant or beneficial to diagnosing your issue.**\r\nList everything you have tried to resolve your issue.\r\n**The details you provide from above will help narrow down the source of your issue and provide quicker support.**",
+            "image_url" : "https://commands.discord.eegras.com//command_images/simple_network_diagram.png"
+        },
+        "networking" : {
+            "description" : "Networking basics in understandable terms",
+            "title" : "Networking basics in understandable terms",
+            "content" : "Networking can be confusing. Adding to confusion are common devices that merge two or more functions into one device and being called a \"router\".\r\n- **ISP**: Internet Service Provider. This is who you (or your parents) pay for internet.\r\n- **Modem**: Converts the signal your Internet company sends into Ethernet. Commonly coaxial/fiber from the ISP. This is connected to your Router.\r\n- **Router**: Routes internet packets between devices in your house and the Internet.\r\n- **Wireless** Access Point: This is what your WiFi devices (phone, laptop) connect to to get access to the internet. This is plugged into your Router, or it can be plugged into an Ethernet Switch.\r\n- **Ethernet** Switch: Allows you to connect multiple Ethernet devices to one cable. This is plugged into your Router or another Ethernet Switch",
+            "image_url" : null
+        },
+        "nodisplay" : {
+            "description" : "I'm not getting video output?",
+            "title" : "I'm not getting video output?",
+            "content" : "Make sure your display cable is plugged into the graphics card (green) and NOT the motherboard (red).\r\nIf there is still no display after switching outputs, make sure to reboot.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/nodisplay.png"
+        },
+        "nvmesata" : {
+            "description" : "What is the difference between NVME and SATA protocols?",
+            "title" : "What is the difference between NVME and SATA protocols?",
+            "content" : "SATA and NVMe are the two primary storage protocols used in modern SSDs.\r\nSATA III has a maximum throughput of 600MB/s, while NVMe drives (on PCIe 4.0) can theoretically support up to 7GB/s sequential read and 5GB/s sequential write.\r\nHowever, the actual performance difference is not perceptible in the vast majority of consumer applications and games, as these programs are already optimized, but also because other system processes have to operate on the data received.\r\nThere are cases where the advantages of NVMe over SATA are more apparent, such as life sciences, financial computing, database and video caching, and large virtualized environments used in enterprise offices.\r\nMake sure to check if your system is compatible with the specific protocol and form-factor of an SSD before using or purchasing.",
+            "image_url" : null
+        },
+        "nzxtfpanel" : {
+            "description" : "NZXT Front Panel Connector Guide",
+            "title" : "NZXT Front Panel Connector Guide",
+            "content" : "Refer to the image on how to connect the front panel cable from NZXT cases with or with-out the provided NZXT breakout connector adapter.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/nzxtfpanel.png"
+        },
+        "occt" : {
+            "description" : "OCCT Download link",
+            "title" : "OCCT Download link",
+            "content" : "OCCT is an overclock stability testing tool. Get it from [OCBASE's official download page](https://www.ocbase.com/download).",
+            "image_url" : null
+        },
+        "opinion" : {
+            "description" : "Thats just your opinion!",
+            "title" : "Thats just your opinion!",
+            "content" : "Not every argument is worth the time and energy. First, determine if you're arguing over opinion, then stop.",
+            "image_url" : null
+        },
+        "paperclip" : {
+            "description" : "PAPERCLIP",
+            "title" : "PAPERCLIP",
+            "content" : "The paperclip test is used to force a power supply to turn on through the same method that the motherboard does. This is done by bridging the PS_ON terminal to a ground terminal in the ATX 24 Pin connector (See diagram below).\r\nSome power supplies require having some form of load on the power supply, such as a fan to power on.\r\nSee [Corsair Video FAQ: How to test a Corsair power supply](https://youtu.be/5FWXgQSokF4).",
+            "image_url" : "https://commands.discord.eegras.com//command_images/paperclip.png"
+        },
+        "pcbuildtroubleshoot" : {
+            "description" : "PC Build Troubleshoot Photo Guide",
+            "title" : "PC Build Troubleshoot Photo Guide",
+            "content" : "",
+            "image_url" : "https://commands.discord.eegras.com//command_images/troubleshoot_v2.png"
+        },
+        "pcielock" : {
+            "description" : "Where is the PCIe retention lock located and how do I use it?",
+            "title" : "Where is the PCIe retention lock located and how do I use it?",
+            "content" : "Note that the lock will automatically pop up to hold the graphics card (or any other 16x slot card) in place of the slot.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/pcielock.gif"
+        },
+        "pciepower" : {
+            "description" : "What a fully seated connector looks like",
+            "title" : "What a fully seated connector looks like",
+            "content" : "https://commands.discord.eegras.com//command_images/pciepower.png",
+            "image_url" : null
+        },
+        "pcieslots" : {
+            "description" : "What's the difference between PCIe slot widths?",
+            "title" : "What's the difference between PCIe slot widths?",
+            "content" : "1x is commonly used for Wi-Fi network adapters and USB hubs. 4x and 8x for capture cards, sound cards and thunderbolt adapters. 16x for graphics cards. Refer to the image on bandwidth allocation for slot width.",
+            "image_url" : "https://files.mostwanted002.page/pcie-link-performance.png"
+        },
+        "psucabletypes" : {
+            "description" : "What do the connectors on the power supply cables look like?",
+            "title" : "What do the connectors on the power supply cables look like?",
+            "content" : "Refer to the image shown to see how cables are shaped and how each pin is differently shaped. Remember that the solid ends usually go to the power supply and the splti ends go to the hardware you are connecting to on modular power supplies.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/cabletypes.png"
+        },
+        "pushpull" : {
+            "description" : "What is \"Push\", \"Pull\", and \"Push Pull\"?",
+            "title" : "What is \"Push\", \"Pull\", and \"Push Pull\"?",
+            "content" : "\"Push\", \"Pull\", and \"Push Pull\" refer to how your raditor fan is mounted in relation to your radiator. The performance difference between \"Push\" and \"Pull\" is minimal and shouldn't be considered. \"Pull\" has the advantage of dust collecting on the surface of your radiator for easy cleaning versus \"Push\" which sandwiches it between your fan and radiator.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/pushpull.png"
+        },
+        "qvl" : {
+            "description" : "What is the QVL?",
+            "title" : "What is the QVL?",
+            "content" : "The QVL, or Qualified Vendors List, is a list of components tested by the manufacturer of the product and is guaranteed by them that it will work. This list is often associated with memory on motherboards for memory that will be guaranteed to reach the full speed on the board. This does not mean that memory, not on the list, won't work or won't go to the full speed under XMP. It just means that it hasn't been tested; thus, it is not guaranteed to work entirely on the board.\r\nThe QVL is found on your motherboard's support page.",
+            "image_url" : null
+        },
+        "raid" : {
+            "description" : "What is RAID?",
+            "title" : "What is RAID?",
+            "content" : "RAID (Redundant Array of Independent Drives) is used to create a single volume from multiple drives, commonly for redundancy , not backup, reasons. The exception being RAID Level 0 which merges the drives into a single volume, but runs a higher risk of full data loss. This is due to the data being striped across the drives; thus, a single drive failure results in the data on all drives is useless and gone.\r\nIt is recommended that consumers avoid the use of RAID as a whole due to the complexity and management of the array(s).\r\n**RAID is not a backup!**",
+            "image_url" : null
+        },
+        "ramlatency" : {
+            "description" : "What is RAM Latency?",
+            "title" : "What is RAM Latency?",
+            "content" : "RAM Latency is a value that denotes how fast a stick of RAM actually is. CAS Latency is a number of clock cycles it takes to do changes in RAM. A faster clock rate means these get done faster, even if latency is slower.\r\n```\r\n(1/[<MT/s> / 2]) * 1000 * <CAS> = True Latency\r\nMT/s    CAS Latency    True Latency (ns)\r\n3600             14                 7.78\r\n3200             14                 8.75\r\n3600             16                 8.89\r\n3200             16                10.00\r\n3600             18                10.00\r\n3200             18                11.25\r\n3600             22                12.22\r\n3200             22                13.75\r\n```",
+            "image_url" : null
+        },
+        "randomrestart" : {
+            "description" : "What can you provide to get the best and fastest help with a crashing or restarting computer?",
+            "title" : "What can you provide to get the best and fastest help with a crashing or restarting computer?",
+            "content" : "If your system is restarting randomly or is just crashing, it is best to provide as many accurate details as possible to receive the quickest and most effective help.\r\n**Have these details in a SINGLE message**\r\nInclude all of the following details:\r\n- The model of computer or a list of the parts used in the computer and the age of the afflicted system\r\n- Any and all overclocks, XMP/DOCP/AXMP profiles used.\r\n- The frequency your memory is currently running at.\r\n- The maximum temperature of system components under load, not idle.\r\n- Any errors and Blue Screens of Death you are receiving.\r\n- Any patterns during the random restarts including the frequency of the restarts and how long the issue has been occurring.\r\n- List everything you have tried to resolve your issue.\r\nSome of the more common reasons for \"random\" restarts is due to instability in overclocks, which includes XMP/DOCP/AXMP, high temperatures on processors, failed hardware, bugs in an OS, or an issue with the electrical supply.\r\n**The details you provide from above will help narrow down the source of your issue and provide quicker support.**",
+            "image_url" : null
+        },
+        "rgbconnector" : {
+            "description" : "What are RGB headers, connectors and how do they work?",
+            "title" : "What are RGB headers, connectors and how do they work?",
+            "content" : "There are two types of RGB. One being Addressible RGB which is 5-Volt powered and uses 3-pins. The other being RGB which is 12-Volt powered and uses 4-pin. Refer to the image below on how they are connected to RGB headers on the motherboard.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/argb_rgb_header.png"
+        },
+        "rgbconnectortype" : {
+            "description" : "What do aRGB and RGB connectors look like and how are they used?",
+            "title" : "What do aRGB and RGB connectors look like and how are they used?",
+            "content" : "RGB connectors are 12v 4-pin RGB connectors that are called:\r\n- jRGB (MSI)\r\n- RGB_Header (ASUS)\r\n- LED_C (Gigabyte)\r\naRGB connectors are 5v 3-pin Addressible RGB connectors that are called:\r\n- jRainbow (MSI)\r\n- ADD_Gen2 (ASUS)\r\n- D_LED (Gigabyte)",
+            "image_url" : "https://commands.discord.eegras.com//command_images/rgbconnector.png"
+        },
+        "rgbcontrol" : {
+            "description" : "Open Source or Third Party Fan Control and RGB software",
+            "title" : "Open Source or Third Party Fan Control and RGB software",
+            "content" : "Manufacturers' provided RGB and fan control software is often pretty bad. Not only are they limited to working with their own hardware, sometimes they don't even do that. Further, they can contain unwanted telemetry.\r\nConsider an alternative:\r\n- [FanControl](https://github.com/Rem0o/FanControl.Releases) \u2013 free fan control program for Windows\r\n- [OpenRGB](https://openrgb.org/releases.html) \u2013 free RGB control program for Windows and Linux\r\n- [SignalRGB](https://www.signalrgb.com/) - freemium RGB control program",
+            "image_url" : null
+        },
+        "rgbledtype" : {
+            "description" : "What's the difference between Addressible RGB and Non-Addressible RGB lighting?",
+            "title" : "What's the difference between Addressible RGB and Non-Addressible RGB lighting?",
+            "content" : "Addressible RGB has a microcontroller per LED which allows individual LED customization for more finer control while Non-Addressible RGB can only set every led with the one color:",
+            "image_url" : "https://commands.discord.eegras.com//command_images/addressablevsnon_2.gif"
+        },
+        "rtfm" : {
+            "description" : "Read the manual!!!",
+            "title" : "Read the manual!!!",
+            "content" : "Manuals contain valuable information about the specifics of your system. Motherboard manuals, in particular, will tell you:\r\n- Important information regarding compatible CPUs and RAM\r\n- The correct memory slots to populate based on the number of modules\r\n- A detailed layout of your motherboard\r\n- Instructions for clearing your CMOS/BIOS\r\n- Explanations for settings and options\r\nIf you no longer have your manual, you can find it on the manufacturer website, in the support page of your specific motherboard model.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/rtfm.png"
+        },
+        "sataconnection" : {
+            "description" : "How do I connect a SATA Drive?",
+            "title" : "How do I connect a SATA Drive?",
+            "content" : "A SATA storage drive uses two connections in order for it to function. The wider cable is to provide power to the drive from the power supply and the smaller cable provides a DATA connection between the motherboard and the drive itself.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/sata-connectors.png"
+        },
+        "sli" : {
+            "description": "What is SLI?",
+            "title" : "What is SLI?",
+            "content" : "In recent years, SLI support has been dropped from games and applications in favor of cost savings in-licensing and development time. It has become more practical to use a single, more powerful GPU over multiple weaker GPUs linked together. The last game to support SLI was released in October of 2016 as a result.\r\nMulti GPU, not SLI or NVLink, is commonly used in rendering tasks for 3D work and production environments, where tasks are easier to split up and assign to multiple rendering devices.",
+            "image_url" : null
+        },
+        "smart" : {
+            "description": "What is SMART data and how do I get it?",
+            "title" : "What is SMART data and how do I get it?",
+            "content" : "Self-Monitoring and Reporting Technology (SMART) data is the diagnostic data produced by HDDs and SSDs. SMART data can be viewed using [CrystalDiskInfo](https://crystalmark.info/redirect.php?product=CrystalDiskInfo) on Windows and [smartctl](https://linux.die.net/man/8/smartctl) in Linux. This is suitable for determining the 'health' of a drive, but will only will report issues after the drive has detected them.\r\nAccording to [data captured by Backblaze](https://www.backblaze.com/blog-smart-stats-2014-8.html#S188R), the following five values are indicative of imminent drive failure:\r\n- SMART 5: Reallocated_Sector_Count.\r\n- SMART 187: Reported_Uncorrectable_Errors.\r\n- SMART 188: Command_Timeout.\r\n- SMART 197: Current_Pending_Sector_Count.\r\n- SMART 198: Offline_Uncorrectable.\r\n\r\nLook at raw numbers, to avoid any confusion with how drive manufacturers set their thresholds. In any case, it is essential to have backups of important data in case a drive dies.",
+            "image_url" : null
+        },
+        "smfail" : {
+            "description": "How do I get to safe mode in a dire situation?",
+            "title" : "How do I get to safe mode in a dire situation?",
+            "content" : "If you are unable to boot into Windows and need to access safe mode, you can force Windows into the recovery process by tricking it into thinking it is unable to boot further.\r\nThis is done by killing power to the system after the OS has started booting, but before the login screen. Repeat this process 3\u20135 times in a row, and Windows will prompt you with the boot troubleshooting menu.\r\nSelect Troubleshoot > Advanced Options > Startup Settings, then select Restart. Press 4 to boot into Safe Mode.\r\nFor further instructions, see [Start your PC in safe mode in Windows - Microsoft Support](https://support.microsoft.com/en-us/windows/start-your-PC-in-safe-mode-in-windows-92c27cff-db89-8644-1ce4-b3e5e56fe234).",
+            "image_url" : null
+        },
+        "smnormal" : {
+            "description": "How do I get to Safe Mode in a normal situation?",
+            "title" : "How do I get to Safe Mode in a normal situation?",
+            "content" : "To boot Windows into safe mode: Go into the start menu, click the power icon, hold Shift and keep holding it, and then click Restart.\r\n- If you can only access the login screen, this process can be done using the restart button in the bottom right of the screen. You will arrive at a blue screen with multiple options. Select Troubleshoot > Advanced Options > Startup Settings, then select Restart. Press 4 to boot into Safe Mode.\r\nFor further instructions, see [Start your PC in safe mode in Windows - Microsoft Support](https://support.microsoft.com/en-us/windows/start-your-PC-in-safe-mode-in-windows-92c27cff-db89-8644-1ce4-b3e5e56fe234).",
+            "image_url" : null
+        },
+        "speccy" : {
+            "description": "Speccy",
+            "title" : "Speccy",
+            "content" : "Speccy is a tool that lists your systems specs. To use it:\r\n1. [Download Speccy](https://www.ccleaner.com/speccy/download/standard) from CCleaner.\r\n2. Run Speccy & share the URL by clicking clicking `File` -> `Publish Snapshot`, and pasting the link in this channel.\r\n**You should send a URL. Do not share a file or screenshot.**",
+            "image_url" : null
+        },
+        "ssdtypes" : {
+            "description": "The SSD Types",
+            "title" : "The SSD Types",
+            "content" : "Following graphic will give you an overview of common SSD types.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/ssd-types.png"
+        },
+        "steamdeck" : {
+            "description": "Steam Deck Specs",
+            "title" : "Title",
+            "content" : "Read. The. Specs. [https://www.steamdeck.com/en/tech](https://www.steamdeck.com/en/tech) Read it. Read them. Click the link. Read the contents. Do it. Click it. Read it.",
+            "image_url" : null
+        },
+        "stfu" : {
+            "description": "Shorten the Friggin' URL!",
+            "title" : "Shorten the Friggin' URL!",
+            "content" : "Woah, that's a long link. You can usually delete the portion of the URL after `?`, as this segment generally contains unnecessary tracking parameters.\r\nExamples:\r\n- **https://example.com/**~~?foo#bar&refer=bW96endhc2hlcmU=~~\r\n- **https://amazon.com/Product_Name/dp/A012345678**/~~ref=sr_1_2?crid=[...]1ff1cffb~~\r\n- **https://newegg.com/Product_Name/p/A01234567890123**~~?Description=[...]-Product&quicklink=true~~\r\nYou can also use the [ClearURLs browser extension](https://github.com/ClearURLs/Addon#readme) to do this for you.",
+            "image_url" : null
+        },
+        "storagebase" : {
+            "description": "Why is my 1TB drive less than 1000GB?",
+            "title" : "Why is my 1TB drive less than 1000GB?",
+            "content" : "Because 1000 GB (Gigabytes) = 931 GiB (Gibibytes).\r\nHumans (and hardware vendors) measure storage capacity in base-ten metric prefixes (kilo, Mega, Giga, Tera).\r\nComputers however, measure using binary prefixes (kibi-, Mebi-, Gibi-, Tebi-, ...), e.g. 1TiB (Tebibyte) = 1024 (Gibibytes) = 1024^4 bytes. This can create discrepancies in the apparent capacity of a drive, especially for software that reports GB that are actually GiB.",
+            "image_url" : null
+        },
+        "supportchannels" : {
+            "description": "Each of the different support channels has a purpose.",
+            "title" : "Each of the different support channels has a purpose.",
+            "content" : "Each of the support channels has a different purpose:\r\n- [#build-help](https://discord.com/channels/1039926726320468151/1106481285205073980) is for selecting components, systems, and accessories\r\n- [#tech-support](https://discord.com/channels/1039926726320468151/1251919730181279896) is for fixing things and guidance on setting up more complex items like networking, overclocking, undervolting\r\n",
+            "image_url" : null
+        },
+        "swap" : {
+            "description": "What is the pagefile/swapspace?",
+            "title" : "What is the pagefile/swapspace?",
+            "content" : "Swap space, or the pagefile, is a space used by the system to expand into when the system memory is needed for a more present task. When your system begins to run out of memory to the current task, it moves the content of idle tasks into this space to free up the faster memory. If the active application needs more memory than available, it can also spill over into the swap space, which can affect the application's performance.\r\nIn Windows, the amount of storage space in use for swap is the total capacity of system memory subtracted from 'Committed' memory in task manager.",
+            "image_url" : null
+        },
+        "temps" : {
+            "description": "What are safe temperatures and how can I lower them?",
+            "title" : "What are safe temperatures and how can I lower them?",
+            "content" : "You will have a multitude of thermal sensors within your system. For most components in your system, a maximum temperature under **full load** should be less than or equal to 85C. Temperatures at an idle or low system load can fluctuate greatly, will be affected more by ambient temperatures, and are higher than expected due to a lower fan speed on many default profile to decrease noise at low loads.\r\nThere are some exceptions to this, such as hard drives, which typically have a max operational temperature of 60-65C or VRMs (Voltage Regulator Modules) on the motherboard, exceeding 100C without issue. There are instances where going past the max recommended or reliability temperature is expected or acceptable such as NVMe SSD controllers or laptops, where cooling performance is limited. In cases like this, the absolute upper limit would be 95C before taking action.\r\nIf you have a sensor reporting an abnormally high temperature in a piece of software, double-check the reading using another piece of software. Such software includes HWiNFO or software designed by the manufacturer of the afflicted component.\r\nIf you wish to reduce your thermals, you can increase the fan speed(s) to cool components, reduce the ambient air temperature or increase airflow around the system, or upgrade the cooler on an afflicted part.",
+            "image_url" : null
+        },
+        "tpm" : {
+            "description": "What is a Trusted Protection Module or TPM?",
+            "title" : "What is a Trusted Protection Module or TPM?",
+            "content" : "A TPM is a hardware or firmware (fTPM) module to provide extra security functions in a computer. These help increase security through a hardware, or firmware for ftpm, random number generation, generation of cryptographic keys, hardware authentication, and more. In common settings, these are also used to help secure passwords, drive encryption. There is no harm in enabling your TPM.\r\nTo enable your TPM, you will need to enter the BIOS. On intel systems, it will be called PTT / Platform Trusted Technolgy. On AMD, it will be called fTPM. To find these, look in your security or advanced settings or refer to your manual.\r\nIn Windows, you can go to the start menu and search `tpm.msc` to view if the tpm is active. In Linux, you can run `dmesg | grep -i tpm to view tpm` logs.",
+            "image_url" : null
+        },
+        "usbc" : {
+            "description": "What does a USB-C header look like?",
+            "title" : "What does a USB-C header look like?",
+            "content" : "The USB-C header is located on your motherboard and is used to connect front panel USB-C connector(s) that come on the front panel of your case. You can refer to your motherboard user manual on where it's located on your motherboard. Not all cases have USB-C ports.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/usb-c-header.png"
+        },
+        "usbtypes" : {
+            "description": "What types of USB connectors are there and what do they look like?",
+            "title" : "What types of USB connectors are there and what do they look like?",
+            "content" : "Many different standards for USB connectors are used and vary from device to device. Refer to the image on what they look like.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/usb-types.jpg"
+        },
+        "userbenchmark" : {
+            "description": "Do not use UserBenchMark!",
+            "title" : "Do not use UserBenchMark!",
+            "content" : "Do not use UserBenchMark (UBM) for benchmarking or comparing hardware components. Please know that they have been at the center of drama due to accusations of being biased towards certain brands, using outdated or nonsensical means to score products, as well as several other things that you should know. You can learn more about this by [seeing what other members of the PCMR have been discussing lately](https://www.reddit.com/r/pcmasterrace/search/?q=userbenchmark&restrict_sr=1&sr_nsfw=). Please strongly consider taking their information with a grain of salt and certainly do not use it as a say-all about component performance.\r\nIf you're looking for benchmark results and software, we can recommend the use of tools such as Cinebench R20 for CPU performance and 3DMark's TimeSpy ([a free demo is available on Steam, click \"Download Demo\" in the right bar](https://store.steampowered.com/app/223850/3DMark/)), for easy system performance comparison.",
+            "image_url" : null
+        },
+        "vcredist" : {
+            "description": "Game Redistributables",
+            "title" : "Game Redistributables",
+            "content" : "These are files needed by games and applications to run as intended.\r\nArrears for these are commonly missing DLLs or a related failed/error on application start-up.\r\nVisual C++ runtime: [https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/](https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/)\r\n(To install, run the included install_all.bat with admin privileges (right click, \"Run as administrator\")",
+            "image_url" : null
+        },
+        "vpn" : {
+            "description": "Do I need a VPN?",
+            "title" : "Do I need a VPN?",
+            "content" : "Using a VPN will give you privacy from your ISP, public Wi-Fi networks, and peer-to-peer clients.\r\nVPNs will **not** keep your browsing habits anonymous, nor will it add additional security to non-secure (HTTP) traffic. A VPN is not a replacement for good security practices, and free VPNs may sell your browsing data.",
+            "image_url" : null
+        },
+        "w11" : {
+            "description": "Should you upgrade to Windows 11?",
+            "title" : "Should you upgrade to Windows 11?",
+            "content" : "If you have 12th or 13th generation Intel CPUs with E/P cores you should. Windows 11 has optimizations for these CPUs. If you don't have those CPUs, you could still consider it. It is not as broken as it used to be.\r\nWindows 10 is still supported and will only stop getting updates <t:1760418000:R>. You have time to wait.",
+            "image_url" : null
+        },
+        "w11installbypass" : {
+            "description": "To install Windows 11 without internet...",
+            "title" : "To install Windows 11 without internet...",
+            "content" : "1. Press Shift+F10 to open a Command Prompt.\r\n2. Type OOBE\\BYPASSNRO into the prompt and hit enter.\r\n3. The PC should restart. Continue installation as normal.\r\n4. On the Wi-Fi page, select the new \"I don't have internet\" option.\r\nOnce you reach the desktop, you can install the appropriate network drivers to access the internet.",
+            "image_url" : null
+        },
+        "whackamole" : {
+            "description": "Try to be more specific with your question.",
+            "title" : "Try to be more specific with your question.",
+            "content" : "When you ask questions that aren't very specific or don't cover the full picture, it feels like playing whack-a-mole to answer. Please explain in detail exactly what you are trying to accomplish, and your full PC spec list if applicable.",
+            "image_url" : "https://commands.discord.eegras.com//command_images/whack-a-mole.gif"
+        },
+        "whatsm2" : {
+            "description": "Whats M.2?",
+            "title" : "Whats M.2?",
+            "content" : "The M.2 interface is a multi-use interface commonly used for storage and wireless devices. In the case of storage, the SATA and NVMe protocols are both often seen used on the interface, but not every M.2 slot supports both. With SSD's, the SATA \"key\" is commonly referred to as \"B\" or \"B+M\" and NVMe using the \"M\" key. Some systems may only support one over all of their slots, both, or a combination. In some cases, the motherboard may reallocate resources, such as SATA ports, to the m.2 slot, effectively disabling SATA ports in favor of your M.2 SSD. The best way to know what the system supports and how it handles allocation is to refer to documentation, such as your manual.\r\nMake sure to check if your system is compatible with the specific protocol and form factor of SSD before using or purchasing.",
+            "image_url" : null
+        },
+        "wic" : {
+            "description": "Windows Integrity Checks",
+            "title" : "Windows Integrity Checks",
+            "content" : "The Windows operating system has two main integrity checks to make sure that the files for Windows itself are in a stable state.\r\n```powershell\r\nsfc /scannow\r\n```\r\nRuns a System File Check to see if the Windows files, including DLLs, have any issues. If it finds any problems, it will attempt to fix the problem, but may not always succeed.\r\n```powershell\r\nDISM /Online /Cleanup-Image /ScanHealth\r\n```\r\nThe DISM command above is another health check for Windows to act as a second opinion to find further problems. Cleanup-Image tells DISM to be very strict with the process while it scans the system files. To proceed ahead and repair any corruption detected, following should be executed in order:\r\n```powershell\r\nDISM /Online /Cleanup-Image /CheckHealth\r\nDISM /Online /Cleanup-Image /RestoreHealth\r\n```\r\n\r\n```powershell\r\nchkdsk C: /f /r\r\n```\r\nThe chkdsk command runs a basic check on the selected disk, in this case C:, locates bad sectors and tries to recover readable information, /r, and attempts to fix the errors,/f.\r\nAll three scans need to be done from either a recovery command prompt or an admin command prompt.",
+            "image_url" : null
+        },
+        "winav" : {
+            "description": "What anti-virus should I use on Windows?",
+            "title" : "What anti-virus should I use on Windows?",
+            "content" : "You probably don't need third-party anti-malware software. These days, Microsoft Defender Antivirus has similar accuracy to the paid AV programs. See [AV-Test](https://www.av-test.org/en/antivirus/home-windows/manufacturer/microsoft/) and [SELabs](https://selabs.uk/reports/endpoint-security-eps-home-2023-q1/)'s testing reports.",
+            "image_url" : null
+        },
+        "windowsdrive" : {
+            "description": "How do I add a new drive in Windows?",
+            "title" : "How do I add a new drive in Windows?",
+            "content" : "In the Start Menu, search for \"Disk Management\" and open it. At the bottom of the window, scroll till you see a black bar and right-click on the bar. Select \"New Simple Volume\" and follow the wizard keeping all options as they are. When you get to the option for MBR vs. GPT, select GPT unless its a system from 2011 or earlier. For the option after about the drive letter, choose any letter you would like that hasn't already been used.",
+            "image_url" : null
+        },
+        "windowsreinstall" : {
+            "description": "How to install or reinstall Windows.",
+            "title" : "How to install or reinstall Windows.",
+            "content" : "Reinstalling Windows can quickly fix many issues such as malware, driver issues, etc.\r\nYou will need an USB drive with at least 8GB of capacity and a working computer.\r\nDownload the [Windows 10 Media Creation Tool](https://www.microsoft.com/en-us/software-download/windows10) or the [Windows 11 Media Creation Tool](https://www.microsoft.com/en-us/software-download/windows11).\r\nThe instructions for creating the bootable install media will be under the tab starting with \"Using the tool to create installation media...\" and contains further instructions on how to install Windows.\r\nAlternatively see [How to install Windows 10? \u2013 MSI Support](https://www.msi.com/support/technical_details/MB_OS_Installation).",
+            "image_url" : null
+        },
+        "windowsreset" : {
+            "description": "Reseting Windows is NOT the same as a reinstall.",
+            "title" : "Reseting Windows is NOT the same as a reinstall.",
+            "content" : "Resets are not a full reinstall of the system and can lead to a broken OS.\r\nType '/windowsreinstall' for instructions on doing a proper clean install.",
+            "image_url" : null
+        },
+        "xmp" : {
+            "description": "What is X.M.P.?",
+            "title" : "What is X.M.P.?",
+            "content" : "Extreme Memory Profile or XMP is a system developed by Intel to running memory at higher than stock speeds without the need to mess around with manual overclocking. Profiles are stored in a small chip on the DIMMs, and motherboards can read from the chip. From there, you can set your memory to higher than stock speeds.\r\nTo do this, boot into your BIOS and look for settings regarding XMP, AXMP, or DOCP. These are the settings where you will select the XMP profile you wish to use. Commonly they can be found on the main BIOS page, or maybe hidden under overclocking, advanced, or \"AI Tweaker\" tabs within the BIOS.\r\nNOTE: While XMP is generally a stable platform, it is still considered an overclock and may not be 100% stable. XMP profiles are tuned for Intel-based systems and have a higher chance of instability on AMD Ryzen systems.",
+            "image_url" : null
+        },
+        "xmpfix" : {
+            "description": "XMPFIX",
+            "title" : "XMPFIX",
+            "content" : "content",
+            "image_url" : "If your XMP or DOCP profile is unstable, there are a few things that can be done to help improve stability.\r\n- Make sure your memory sticks are in the correct slots on your motherboard, as defined in the motherboard manual.\r\n- Make sure your BIOS is up to date\r\n- If all else fails, you will need to manually overclock your memory or use a lower speed profile or JEDEC\r\nEven if your system never had issues in the past, you will be asked to remove these profiles during the troubleshooting process to remove potential places to introduce the instability."
+        },
+        "xyproblem" : {
+            "description": "Description",
+            "title" : "Title",
+            "content" : "It sounds like you're asking about an attempted solution (\"How do I do Y (so I can do X)?\") rather than the actual problem you're trying to solve. (\"How do I do X?\"). Please provide more detailed information about what exactly you're trying to do, and any other solutions you've already ruled out, so that others can provide more effective assistance!\r\n[https://xyproblem.info/](https://xyproblem.info/)",
+            "image_url" : null
+        }
+    }
+}
