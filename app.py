@@ -1,8 +1,5 @@
 import discord
-import os
-import techpowerup as tpudb
 from utils import *
-from datetime import timedelta
 import logging
 import random
 import sys
@@ -17,7 +14,6 @@ import uuid
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from PIL import Image, ImageDraw, ImageFont
 import time
-import threading
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
