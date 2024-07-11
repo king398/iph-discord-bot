@@ -158,7 +158,9 @@ async def on_message(message):
 async def on_member_join(member):
     # Send a direct message to the new member
     await member.send(
-        content="S. if anyone with the role IPCHW janny dms you advertising a server called Indian PC hardware, ignore it")
+        content="""Welcome to Indian PC Liberators, the free forum for discussing PC hardware and tech in India. Please be sure to check out our #1252207002034372618 and say hello in #1235520206760316972 !
+P.S. If anybody with the role "IPCHW Janny" tries to DM you an invite to their server, ignore it.
+""")
 
     # Send a message to a welcome channel
     welcome_channel = member.guild.get_channel(
